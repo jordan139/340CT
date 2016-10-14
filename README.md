@@ -3,8 +3,8 @@ DEADLINE - 15th DECEMBER
 What we are using: 
 
   Methodology – SCRUM
-  java (netbeans) - Layered Architecture
-  Class diagram - for each functionality 
+  java (netbeans) - Layered Architecture\n
+  Class diagram - for each functionality
   Report evaluating the groups approach to using the methodology 
   Justification 
 
