@@ -17,14 +17,18 @@ public class helloWorld {
         int a;
         int b;
         int c; 
+        int d;
+        int e;
         a = 100;
         b = 200;
         c = 500;
+        d = 1000;
+        e = 2000;
                 
         System. out.println(a + b);
         System.out.println(a + b + c);
         System.out.println("Hello World!");
-        
+        System.out.println(e + d);
     }
     
     
