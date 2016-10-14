@@ -5,18 +5,17 @@ package ecs_system;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author dayj13
  */
 public class helloWorld {
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         System.out.println("Hello World!!");
         int a;
         int b;
-        int c; 
+        int c;
         int d;
         int e;
         int f;
@@ -27,14 +26,21 @@ public class helloWorld {
         d = 1000;
         e = 2000;
         f = 3000;
-        z = 5000; 
-        
-        System. out.println(a + b);
+        z = 5000;
+
+        System.out.println(a + b);
         System.out.println(a + b + c);
         System.out.println("Hello World!");
         System.out.println(e + d + f);
         System.out.println(z);
+        System.out.println("Hi, this is Henry!");
+        testMethod(a, b, c, d, e);
+
     }
-    
-    
+
+    public static void testMethod(int a, int b, int c, int d, int e) {
+
+        System.out.println(a + b + c + d + e);
+
+    }
 }
