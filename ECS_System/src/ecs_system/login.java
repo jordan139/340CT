@@ -146,11 +146,56 @@ public class login extends javax.swing.JFrame {
             welcomeTemp w = new welcomeTemp();
             w.setVisible(true);
             
-                    
-                   
-        } 
+        }
         
-       
+        else if (password.contains("admin") && username.contains("henry")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
+        else if (password.contains("admin") && username.contains("jey")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
+        else if (password.contains("admin") && username.contains("yusuf")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
+        else if (password.contains("admin") && username.contains("george")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
+        else if (password.contains("admin") && username.contains("fems")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
+        else if (password.contains("admin") && username.contains("kyle")){
+             usernametextField.setText("");
+            passwordtextField.setText("");
+            // close window 
+            close();
+            welcomeTemp w = new welcomeTemp();
+            w.setVisible(true);
+        }
         else {
             //show message dialoge 
             JOptionPane.showMessageDialog(null, "This password or username is incorrect\nClick OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
