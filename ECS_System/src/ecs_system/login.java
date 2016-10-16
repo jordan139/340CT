@@ -46,7 +46,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel1.setText("LOGIN");
 
-        jLabel2.setText("Enter UserName");
+        jLabel2.setText("Enter Username");
 
         jLabel3.setText("Enter Password ");
 
@@ -132,11 +132,15 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    int wrongInput = 3;
+    
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         
         String password = passwordtextField.getText();
         String username = usernametextField.getText();
+        
+        
+        
         
         if(password.contains("admin") && username.contains("jordan")){
             usernametextField.setText("");
@@ -197,12 +201,24 @@ public class login extends javax.swing.JFrame {
             w.setVisible(true);
         }
         else {
-            //show message dialoge 
-            JOptionPane.showMessageDialog(null, "This password or username is incorrect\nClick OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
+            //show message 
+            
+            JOptionPane.showMessageDialog(null, "This password or username is incorrect\n" + "Warning " + wrongInput + " attempts left\n"+ "Click OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
+            
             passwordtextField.setText("");
             usernametextField.setText("");
             
+            if(wrongInput == 1 ){
+                JOptionPane.showMessageDialog(null, "WARNING: One attempt left ");
+                
+            }
             
+            if (wrongInput == 0){
+                JOptionPane.showMessageDialog(null, "To many incorrect attempts\nExiting System");
+                close();
+            }
+            
+            wrongInput--;
         }
         
     }//GEN-LAST:event_enterButtonActionPerformed
