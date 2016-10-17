@@ -88,9 +88,9 @@ public class login extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(usernametextField, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addComponent(passwordtextField))
+                            .addComponent(passwordtextField)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(178, 178, 178))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -203,13 +203,13 @@ public class login extends javax.swing.JFrame {
         else {
             //show message 
             
-            JOptionPane.showMessageDialog(null, "This password or username is incorrect\n" + "Warning " + wrongInput + " attempts left\n"+ "Click OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "This password or username is incorrect\n" + "Warning " + wrongInput + " attempt(s) left\n"+ "Click OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
             
             passwordtextField.setText("");
             usernametextField.setText("");
             
             if(wrongInput == 1 ){
-                JOptionPane.showMessageDialog(null, "WARNING: One attempt left ");
+                JOptionPane.showMessageDialog(null, "WARNING: Final Attempt ");
                 
             }
             
