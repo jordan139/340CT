@@ -71,7 +71,6 @@ public class GUI extends javax.swing.JFrame {
         Coursetitletxt = new javax.swing.JTextField();
         Courseissuetxt = new javax.swing.JTextField();
         Courseduetxt = new javax.swing.JTextField();
-        Coursetypetxt = new javax.swing.JTextField();
         Coursemarktxt = new javax.swing.JTextField();
         Moduletitletxt = new javax.swing.JTextField();
         UpdateBtn = new javax.swing.JButton();
@@ -79,6 +78,7 @@ public class GUI extends javax.swing.JFrame {
         AddBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
+        TypeCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +125,8 @@ public class GUI extends javax.swing.JFrame {
         TextArea.setRows(5);
         jScrollPane2.setViewportView(TextArea);
 
+        TypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Group" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,14 +140,6 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGap(24, 24, 24)
                                 .addComponent(Coursemarktxt))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(25, 25, 25)
-                                .addComponent(Coursetypetxt))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(51, 51, 51)
-                                .addComponent(Courseduetxt))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(57, 57, 57)
@@ -169,7 +163,15 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Modulecodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Modulecodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Courseduetxt)
+                                    .addComponent(TypeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -216,8 +218,8 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Coursetypetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(TypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Coursemarktxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +243,6 @@ public class GUI extends javax.swing.JFrame {
         Moduletutortxt.setText("");
         Courseissuetxt.setText("");
         Modulecodetxt.setText("");
-        Coursetypetxt.setText("");
         Courseduetxt.setText("");
     }
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
@@ -255,7 +256,7 @@ public class GUI extends javax.swing.JFrame {
                 moduletutor = Moduletutortxt.getText();
                 courseissue = Courseissuetxt.getText();
                 modulecode = Integer.parseInt(Modulecodetxt.getText());
-                coursetype = Coursetypetxt.getText();
+                coursetype = TypeCombo.getSelectedItem().toString();
                 coursedue = Courseduetxt.getText();
                 String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + moduletitle + "', MODULE_TUTOR = '" + moduletutor + "', COURSE_NO = " + coursenumber + ", COURSE_TITLE = '" + coursetitle + "', COURSE_ISSUE = '" + courseissue + "', COURSE_DUE = '" + coursedue + "', COURSE_TYPE = '" + coursetype + "', COURSE_MARK = " + coursemark + " WHERE MODULE_CODE = " + modulecode;
                 Statement st = conn.createStatement();
@@ -315,7 +316,7 @@ public class GUI extends javax.swing.JFrame {
                 moduletutor = Moduletutortxt.getText();
                 courseissue = Courseissuetxt.getText();
                 modulecode = Integer.parseInt(Modulecodetxt.getText());
-                coursetype = Coursetypetxt.getText();
+                coursetype = TypeCombo.getSelectedItem().toString();
                 coursedue = Courseduetxt.getText();
                 String sql = "INSERT INTO COURSEWORK VALUES (" + modulecode + ", '" + moduletitle + "', '" + moduletutor + "', " + coursenumber + ", '" + coursetitle + "', '" + courseissue + "', '" + courseissue + "', '" + coursetype + "', " + coursemark + ")";
                 Statement st = conn.createStatement();
@@ -382,12 +383,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Coursemarktxt;
     private javax.swing.JTextField Coursenumbertxt;
     private javax.swing.JTextField Coursetitletxt;
-    private javax.swing.JTextField Coursetypetxt;
     private javax.swing.JTextField Modulecodetxt;
     private javax.swing.JTextField Moduletitletxt;
     private javax.swing.JTextField Moduletutortxt;
     private javax.swing.JButton RemoveBtn;
     private javax.swing.JTextArea TextArea;
+    private javax.swing.JComboBox<String> TypeCombo;
     private javax.swing.JButton UpdateBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
