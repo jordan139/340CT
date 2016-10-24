@@ -19,7 +19,7 @@ public class GUI extends javax.swing.JFrame {
     String moduletitle;
     String coursetitle;
     String moduletutor;
-    String courseissue;
+    String coursedate;
     String coursetype;
     String coursedue;
     String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
@@ -44,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_DATE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
                 }
             }
         } catch (SQLException ex) {
@@ -69,7 +69,7 @@ public class GUI extends javax.swing.JFrame {
         Moduletutortxt = new javax.swing.JTextField();
         Coursenumbertxt = new javax.swing.JTextField();
         Coursetitletxt = new javax.swing.JTextField();
-        Courseissuetxt = new javax.swing.JTextField();
+        Coursedatetxt = new javax.swing.JTextField();
         Courseduetxt = new javax.swing.JTextField();
         Coursemarktxt = new javax.swing.JTextField();
         Moduletitletxt = new javax.swing.JTextField();
@@ -143,7 +143,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(57, 57, 57)
-                                .addComponent(Courseissuetxt))
+                                .addComponent(Coursedatetxt))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(29, 29, 29)
@@ -210,7 +210,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Courseissuetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Coursedatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,7 +241,7 @@ public class GUI extends javax.swing.JFrame {
         Moduletitletxt.setText("");
         Coursetitletxt.setText("");
         Moduletutortxt.setText("");
-        Courseissuetxt.setText("");
+        Coursedatetxt.setText("");
         Modulecodetxt.setText("");
         Courseduetxt.setText("");
     }
@@ -254,11 +254,11 @@ public class GUI extends javax.swing.JFrame {
                 moduletitle = Moduletitletxt.getText();
                 coursetitle = Coursetitletxt.getText();
                 moduletutor = Moduletutortxt.getText();
-                courseissue = Courseissuetxt.getText();
+                coursedate = Coursedatetxt.getText();
                 modulecode = Integer.parseInt(Modulecodetxt.getText());
                 coursetype = TypeCombo.getSelectedItem().toString();
                 coursedue = Courseduetxt.getText();
-                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + moduletitle + "', MODULE_TUTOR = '" + moduletutor + "', COURSE_NO = " + coursenumber + ", COURSE_TITLE = '" + coursetitle + "', COURSE_ISSUE = '" + courseissue + "', COURSE_DUE = '" + coursedue + "', COURSE_TYPE = '" + coursetype + "', COURSE_MARK = " + coursemark + " WHERE MODULE_CODE = " + modulecode;
+                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + moduletitle + "', MODULE_TUTOR = '" + moduletutor + "', COURSE_NO = " + coursenumber + ", COURSE_TITLE = '" + coursetitle + "', COURSE_DATE = '" + coursedate + "', COURSE_DUE = '" + coursedue + "', COURSE_TYPE = '" + coursetype + "', COURSE_MARK = " + coursemark + " WHERE MODULE_CODE = " + modulecode;
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -268,7 +268,7 @@ public class GUI extends javax.swing.JFrame {
                 TextArea.setText("");
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_DATE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
                 }
                 emptyTextfields();
             } catch (NumberFormatException | IndexOutOfBoundsException exception) {
@@ -294,7 +294,7 @@ public class GUI extends javax.swing.JFrame {
                 TextArea.setText("");
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_DATE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
                 }
                 emptyTextfields();
             } catch (NumberFormatException | IndexOutOfBoundsException exception) {
@@ -314,11 +314,11 @@ public class GUI extends javax.swing.JFrame {
                 moduletitle = Moduletitletxt.getText();
                 coursetitle = Coursetitletxt.getText();
                 moduletutor = Moduletutortxt.getText();
-                courseissue = Courseissuetxt.getText();
+                coursedate = Coursedatetxt.getText();
                 modulecode = Integer.parseInt(Modulecodetxt.getText());
                 coursetype = TypeCombo.getSelectedItem().toString();
                 coursedue = Courseduetxt.getText();
-                String sql = "INSERT INTO COURSEWORK VALUES (" + modulecode + ", '" + moduletitle + "', '" + moduletutor + "', " + coursenumber + ", '" + coursetitle + "', '" + courseissue + "', '" + courseissue + "', '" + coursetype + "', " + coursemark + ")";
+                String sql = "INSERT INTO COURSEWORK VALUES (" + modulecode + ", '" + moduletitle + "', '" + moduletutor + "', " + coursenumber + ", '" + coursetitle + "', '" + coursedate + "', '" + coursedue + "', '" + coursetype + "', " + coursemark + ")";
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -328,7 +328,7 @@ public class GUI extends javax.swing.JFrame {
                 TextArea.setText("");
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_DATE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
                 }
                 emptyTextfields();
             } catch (NumberFormatException | IndexOutOfBoundsException exception) {
@@ -378,8 +378,8 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
+    private javax.swing.JTextField Coursedatetxt;
     private javax.swing.JTextField Courseduetxt;
-    private javax.swing.JTextField Courseissuetxt;
     private javax.swing.JTextField Coursemarktxt;
     private javax.swing.JTextField Coursenumbertxt;
     private javax.swing.JTextField Coursetitletxt;
