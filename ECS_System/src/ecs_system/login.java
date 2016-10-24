@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package ecs_system;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
-
-
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,11 +19,22 @@ import javax.swing.JOptionPane;
  */
 public class login extends javax.swing.JFrame {
 
+    String commandline;
+    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
+    String uName = "henry";
+    String uPass = "123";
+
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            System.out.println("Connected to database...");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -133,94 +147,118 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     int wrongInput = 3;
-    
+
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
-        
+
         String password = passwordtextField.getText();
         String username = usernametextField.getText();
-        
-        
-        
-        
-        if(password.contains("admin") && username.contains("jordan")){
-            usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-            
-        }
-        
-        else if (password.contains("admin") && username.contains("henry")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else if (password.contains("admin") && username.contains("jey")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else if (password.contains("admin") && username.contains("yusuf")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else if (password.contains("admin") && username.contains("george")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else if (password.contains("admin") && username.contains("fems")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else if (password.contains("admin") && username.contains("kyle")){
-             usernametextField.setText("");
-            passwordtextField.setText("");
-            // close window 
-            close();
-            welcomeTemp w = new welcomeTemp();
-            w.setVisible(true);
-        }
-        else {
-            //show message 
-            
-            JOptionPane.showMessageDialog(null, "This password or username is incorrect\n" + "Warning " + wrongInput + " attempt(s) left\n"+ "Click OK and try again","Warning",JOptionPane.ERROR_MESSAGE);
-            
-            passwordtextField.setText("");
-            usernametextField.setText("");
-            
-            if(wrongInput == 1 ){
-                JOptionPane.showMessageDialog(null, "WARNING: Final Attempt ");
-                
+        String tempuser = "";
+        String temppass = "";
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+                if (username.equals("")) {
+                    System.out.println("Username required.");
+                } else if (password.equals("")) {
+                    System.out.println("Password required.");
+                } else {
+                    String sql = "SELECT USERNAME FROM LOGIN WHERE USERNAME = '" + username + "'";
+                    rs = st.executeQuery(sql);
+                    while (rs.next()) {
+                        tempuser = rs.getString("USERNAME");
+                        System.out.println(tempuser);
+                    }
+                    if (tempuser.equals(username)) {
+                        String sql2 = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + password + "'";
+                        rs = st.executeQuery(sql2);
+                        while (rs.next()) {
+                            temppass = rs.getString("PASSWORD");
+                            System.out.println(rs);
+                        }
+                        if (temppass.equals(password)) {
+                            new login().setVisible(true);
+                        }
+                    }
+                }
             }
-            
-            if (wrongInput == 0){
-                JOptionPane.showMessageDialog(null, "To many incorrect attempts\nExiting System");
-                close();
-            }
-            
-            wrongInput--;
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-        
+//
+//        if (password.contains("admin") && username.contains("jordan")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//
+//        } else if (password.contains("admin") && username.contains("henry")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else if (password.contains("admin") && username.contains("jey")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else if (password.contains("admin") && username.contains("yusuf")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else if (password.contains("admin") && username.contains("george")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else if (password.contains("admin") && username.contains("fems")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else if (password.contains("admin") && username.contains("kyle")) {
+//            usernametextField.setText("");
+//            passwordtextField.setText("");
+//            // close window 
+//            close();
+//            welcomeTemp w = new welcomeTemp();
+//            w.setVisible(true);
+//        } else {
+//            //show message 
+//
+//            JOptionPane.showMessageDialog(null, "This password or username is incorrect\n" + "Warning " + wrongInput + " attempt(s) left\n" + "Click OK and try again", "Warning", JOptionPane.ERROR_MESSAGE);
+//
+//            passwordtextField.setText("");
+//            usernametextField.setText("");
+//
+//            if (wrongInput == 1) {
+//                JOptionPane.showMessageDialog(null, "WARNING: Final Attempt ");
+//
+//            }
+//
+//            if (wrongInput == 0) {
+//                JOptionPane.showMessageDialog(null, "To many incorrect attempts\nExiting System");
+//                close();
+//            }
+//
+//            wrongInput--;
+//        }
+
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void passwordtextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtextFieldActionPerformed
@@ -277,10 +315,9 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordtextField;
     private javax.swing.JTextField usernametextField;
     // End of variables declaration//GEN-END:variables
-    private void close(){
-        WindowEvent winClosing = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    private void close() {
+        WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosing);
     }
 
 }
-
