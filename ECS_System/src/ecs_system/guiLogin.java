@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ecs_system;
-
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
@@ -17,22 +16,25 @@ import java.sql.SQLException;
  *
  * @author Jordan
  */
-public class login extends javax.swing.JFrame {
+public class guiLogin extends javax.swing.JFrame {
 
     String commandline;
     String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
     String uName = "henry";
     String uPass = "123";
 
-    /**
-     * Creates new form login
-     */
-    public login() {
+    
+     //Creates new form login
+     
+    public guiLogin() {
         initComponents();
+        //when connecting to DB try for an error 
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             System.out.println("Connected to database...");
+            //if error has been thrown catch it 
         } catch (SQLException ex) {
+            //print out the error name 
             System.out.println(ex);
         }
     }
@@ -146,17 +148,20 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //varible used to monitor the amount of times a user trys to log in 
     int wrongInput = 3;
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
-
+        
         String password = passwordtextField.getText();
         String username = usernametextField.getText();
+        //empty string 
         String tempuser = "";
         String temppass = "";
         try {
+            //try for an error 
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-
+            //if DB connects run the following code 
             if (conn != null) {
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
@@ -179,7 +184,7 @@ public class login extends javax.swing.JFrame {
                             System.out.println(rs);
                         }
                         if (temppass.equals(password)) {
-                            new login().setVisible(true);
+                            new guiLogin().setVisible(true);
                         }
                     }
                 }
@@ -286,20 +291,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new guiLogin().setVisible(true);
             }
         });
     }
