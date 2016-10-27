@@ -9,6 +9,26 @@ package ecs_system;
  *
  * @author dayj13
  */
-public class staff {
+public abstract class staff {
+    
+    String staffUsername;
+    String staffPassword;
+    
+    
+    public String getStaffUsername(){
+        return staffUsername;
+    }
+    
+    public void setStaffUsername(String staffUsername) {
+        this.staffUsername = staffUsername;
+    }
+    
+    public String getStaffPassword(){
+        return staffPassword; 
+    }
+    
+    public void setStaffPassword(String staffPassword){
+        this.staffPassword = staffPassword;
+    }
     
 }

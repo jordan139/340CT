@@ -9,6 +9,26 @@ package ecs_system;
  *
  * @author dayj13
  */
-public class student {
+public abstract class student {
+    
+    String studentUsername;
+    String studentPassword;
+    
+    
+    public String getStudentUsername(){
+        return studentUsername;
+    }
+    
+    public void setStudentUsername(String studentUsername) {
+        this.studentUsername = studentUsername;
+    }
+    
+    public String getStudentPassword(){
+        return studentPassword; 
+    }
+    
+    public void setStudentPassword(String studentPassword){
+        this.studentPassword = studentPassword;
+    }
     
 }

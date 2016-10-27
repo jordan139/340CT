@@ -158,6 +158,7 @@ public class guiLogin extends javax.swing.JFrame {
         //empty string 
         String tempuser = "";
         String temppass = "";
+        boolean status = false;
         try {
             //try for an error 
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -170,21 +171,17 @@ public class guiLogin extends javax.swing.JFrame {
                 } else if (password.equals("")) {
                     System.out.println("Password required.");
                 } else {
-                    String sql = "SELECT USERNAME FROM LOGIN WHERE USERNAME = '" + username + "'";
+                    String sql = "SELECT USERNAME, PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
                     rs = st.executeQuery(sql);
                     while (rs.next()) {
                         tempuser = rs.getString("USERNAME");
-                        System.out.println(tempuser);
-                    }
-                    if (tempuser.equals(username)) {
-                        String sql2 = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + password + "'";
-                        rs = st.executeQuery(sql2);
-                        while (rs.next()) {
+                        System.out.println("Username correct.");
+                        if (tempuser.equals(username)) {
                             temppass = rs.getString("PASSWORD");
-                            System.out.println(rs);
-                        }
-                        if (temppass.equals(password)) {
-                            new guiLogin().setVisible(true);
+                            System.out.println("Password correct.");
+                            if (temppass.equals(password)) {
+                                new welcomeTemp().setVisible(true);
+                            }
                         }
                     }
                 }
