@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,7 +150,7 @@ public class guiLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     //varible used to monitor the amount of times a user trys to log in 
-    int wrongInput = 3;
+    int wrongInput = 4;
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         
@@ -158,6 +159,8 @@ public class guiLogin extends javax.swing.JFrame {
         //empty string 
         String tempuser = "";
         String temppass = "";
+        
+       
         boolean status = false;
         try {
             //try for an error 
@@ -178,9 +181,35 @@ public class guiLogin extends javax.swing.JFrame {
                         System.out.println("Username correct.");
                         if (tempuser.equals(username)) {
                             temppass = rs.getString("PASSWORD");
-                            System.out.println("Password correct.");
+                            
+                            if (temppass != password ){
+                            wrongInput--;
+                            JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
+                         
+                            System.out.println(wrongInput);
+                            }
+                                if (wrongInput == 1){
+                                    
+                                    JOptionPane.showMessageDialog(null, "Final Attempt ", "Warning", JOptionPane.ERROR_MESSAGE);
+                                    
+                                }
+                                
+                                if (wrongInput == 0){
+                                    JOptionPane.showMessageDialog(null, "To many incorrect logins\nClosing down system ", "Warning", JOptionPane.ERROR_MESSAGE);
+                                    close();
+                                }
+                            
                             if (temppass.equals(password)) {
                                 new welcomeTemp().setVisible(true);
+                                System.out.println("Password correct.");
+                                close();
+
+                                        
+                                                                    
+                                
+                                
+                                
+                                
                             }
                         }
                     }
