@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package ecs_submit;
-
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.io.File;
+import java.util.*;
 /**
  *
  * @author baheeraj
@@ -100,6 +104,8 @@ public class Window1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        JFrame Window3 = new Window3();
+    Window3.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
