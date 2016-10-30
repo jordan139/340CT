@@ -58,6 +58,7 @@ public class guiLogin extends javax.swing.JFrame {
         passwordtextField = new javax.swing.JPasswordField();
         cancelButton = new javax.swing.JButton();
         enterButton = new javax.swing.JButton();
+        newUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,6 +88,13 @@ public class guiLogin extends javax.swing.JFrame {
             }
         });
 
+        newUser.setText("New User");
+        newUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,7 +106,8 @@ public class guiLogin extends javax.swing.JFrame {
                         .addComponent(cancelButton)
                         .addGap(27, 27, 27)
                         .addComponent(enterButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(newUser))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -107,8 +116,8 @@ public class guiLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernametextField, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                             .addComponent(passwordtextField)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(178, 178, 178))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(178, 178, 178))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +135,8 @@ public class guiLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
-                    .addComponent(enterButton))
+                    .addComponent(enterButton)
+                    .addComponent(newUser))
                 .addGap(47, 47, 47))
         );
 
@@ -170,9 +180,9 @@ public class guiLogin extends javax.swing.JFrame {
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 if (username.equals("")) {
-                    System.out.println("Username required.");
+                    JOptionPane.showMessageDialog(null, "Username Required");
                 } else if (password.equals("")) {
-                    System.out.println("Password required.");
+                    JOptionPane.showMessageDialog(null , "Password Required");
                 } else {
                     String sql = "SELECT USERNAME, PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
                     rs = st.executeQuery(sql);
@@ -182,7 +192,7 @@ public class guiLogin extends javax.swing.JFrame {
                         if (tempuser.equals(username)) {
                             temppass = rs.getString("PASSWORD");
                             
-                            if (temppass != password ){
+                          if (temppass != password ){
                             wrongInput--;
                             JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
                          
@@ -300,6 +310,33 @@ public class guiLogin extends javax.swing.JFrame {
         close();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserActionPerformed
+        String uName;
+        String uPass;
+   
+        uName = "henry";
+        uPass = "123";
+         
+        try{
+        Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+        System.out.println("Connecting to database...");
+        
+            if (conn != null){
+                new newUsr().setVisible(true);
+             
+            }
+        
+        
+        
+        
+        }
+        catch (SQLException ex) {
+            //print out the error name 
+            System.out.println(ex);
+            
+        }
+    }//GEN-LAST:event_newUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -344,6 +381,7 @@ public class guiLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JButton newUser;
     private javax.swing.JPasswordField passwordtextField;
     private javax.swing.JTextField usernametextField;
     // End of variables declaration//GEN-END:variables
