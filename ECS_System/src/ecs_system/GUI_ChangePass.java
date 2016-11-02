@@ -162,7 +162,8 @@ public class GUI_ChangePass extends javax.swing.JFrame {
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
-
+        setVisible(false);
+        new welcomeTemp().setVisible(true);
     }//GEN-LAST:event_returnBtnActionPerformed
 
     /**
