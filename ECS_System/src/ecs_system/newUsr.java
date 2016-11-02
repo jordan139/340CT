@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ecs_system;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jordan
@@ -25,6 +27,7 @@ public class newUsr extends javax.swing.JFrame {
     String uPass = "123";
     String commandline;
     String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
+
     public newUsr() {
         initComponents();
     }
@@ -42,8 +45,12 @@ public class newUsr extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         newUser = new javax.swing.JTextField();
-        newPass = new javax.swing.JTextField();
+        checkPass = new javax.swing.JTextField();
         confirm = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
+        pass = new javax.swing.JTextField();
+        IDtxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,41 +72,62 @@ public class newUsr extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Re-enter password ");
+
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("ID:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(newUser))
+                        .addContainerGap()
+                        .addComponent(confirm))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(newPass, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(confirm)))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(newUser)
+                            .addComponent(IDtxt))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IDtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(newPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addComponent(confirm)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel3.setText("Create a New User ");
@@ -115,7 +143,7 @@ public class newUsr extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,41 +160,42 @@ public class newUsr extends javax.swing.JFrame {
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
 
-    String username = newUser.getText();
-    String password = newPass.getText(); 
-    
-   try {
-            System.out.println("Connecting to the database...");
+        String username = newUser.getText();
+        String password = checkPass.getText();
+        //empty string 
+        String tempuser = "";
+        String temppass = "";
+
+        try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-           
+
             if (conn != null) {
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                System.out.println("Connected to database");
-                                }
-                    if (username.equals("") && password.equals("")){
-                    JOptionPane.showMessageDialog(null,"Username & password is required");
-                    }
-                    else if (password.equals("")){
-                    JOptionPane.showMessageDialog(null,"Password is required");
-                    }
-
-                    else if (username.equals("")){
+                if (username.equals("") && password.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Username & password is required");
+                } else if (password.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Password is required");
+                } else if (username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Username is required");
+                } else {
+                    if (pass.getText().equals(checkPass.getText())) {
+                        try{
+                        String sql = "INSERT INTO LOGIN VALUES (" + Integer.parseInt(IDtxt.getText()) + ",'" + newUser.getText() + "'" + "," + "'" + pass.getText() + "'" + "," + "'" + "TUTOR" + "')";
+                        Statement st = conn.createStatement();
+                        ResultSet rs = null;
+                        st.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(null, "New user has created");
+                        setVisible(false);
+                        new guiLogin().setVisible(true);
+                        } catch(Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Duplicate ID has been found");
+                        }
                     }
-                    else {
-                        String sql = "SELECT USERNAME FROM LOGIN";
-                        //st.executeQuery(sql);
-                      
-                    }  //Statement st = conn.createStatement();
 
+                }  //Statement st = conn.createStatement();
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
-
-
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_confirmActionPerformed
@@ -174,6 +203,10 @@ public class newUsr extends javax.swing.JFrame {
     private void newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newUserActionPerformed
+
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,12 +244,16 @@ public class newUsr extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDtxt;
+    private javax.swing.JTextField checkPass;
     private javax.swing.JToggleButton confirm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newPass;
     private javax.swing.JTextField newUser;
+    private javax.swing.JTextField pass;
     // End of variables declaration//GEN-END:variables
 }

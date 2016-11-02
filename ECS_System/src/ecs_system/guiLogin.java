@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ecs_system;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
@@ -24,9 +25,7 @@ public class guiLogin extends javax.swing.JFrame {
     String uName = "henry";
     String uPass = "123";
 
-    
-     //Creates new form login
-     
+    //Creates new form login
     public guiLogin() {
         initComponents();
         //when connecting to DB try for an error 
@@ -59,6 +58,7 @@ public class guiLogin extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
         enterButton = new javax.swing.JButton();
         newUser = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,6 +95,13 @@ public class guiLogin extends javax.swing.JFrame {
             }
         });
 
+        remove.setText("Remove");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,12 +119,14 @@ public class guiLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernametextField, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                             .addComponent(passwordtextField)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(178, 178, 178))
+                .addGap(18, 18, 18)
+                .addComponent(remove)
+                .addGap(87, 87, 87))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +145,8 @@ public class guiLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(enterButton)
-                    .addComponent(newUser))
+                    .addComponent(newUser)
+                    .addComponent(remove))
                 .addGap(47, 47, 47))
         );
 
@@ -163,26 +173,25 @@ public class guiLogin extends javax.swing.JFrame {
     int wrongInput = 4;
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
-        
+
         String password = passwordtextField.getText();
         String username = usernametextField.getText();
         //empty string 
         String tempuser = "";
         String temppass = "";
-        
-       
+
         boolean status = false;
         try {
             //try for an error 
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            //if DB connects run the following code 
+            //if DB connects run the following code
             if (conn != null) {
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 if (username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Username Required");
                 } else if (password.equals("")) {
-                    JOptionPane.showMessageDialog(null , "Password Required");
+                    JOptionPane.showMessageDialog(null, "Password Required");
                 } else {
                     String sql = "SELECT USERNAME, PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
                     rs = st.executeQuery(sql);
@@ -191,35 +200,34 @@ public class guiLogin extends javax.swing.JFrame {
                         System.out.println("Username correct.");
                         if (tempuser.equals(username)) {
                             temppass = rs.getString("PASSWORD");
-                            
-                          if (temppass != password ){
-                            wrongInput--;
-                            JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
-                         
-                            System.out.println(wrongInput);
+
+                            // CHECK THIS !!!!!!!!!!!!!!!
+                            if (username != tempuser) {
+                                JOptionPane.showMessageDialog(null, "The username" + tempuser + " does not exist!");
                             }
-                                if (wrongInput == 1){
-                                    
-                                    JOptionPane.showMessageDialog(null, "Final Attempt ", "Warning", JOptionPane.ERROR_MESSAGE);
-                                    
-                                }
-                                
-                                if (wrongInput == 0){
-                                    JOptionPane.showMessageDialog(null, "To many incorrect logins\nClosing down system ", "Warning", JOptionPane.ERROR_MESSAGE);
-                                    close();
-                                }
-                            
+
+                            if (temppass != password) {
+                                wrongInput--;
+                                JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
+
+                                System.out.println(wrongInput);
+                            }
+                            if (wrongInput == 1) {
+
+                                JOptionPane.showMessageDialog(null, "Final Attempt ", "Warning", JOptionPane.ERROR_MESSAGE);
+
+                            }
+
+                            if (wrongInput == 0) {
+                                JOptionPane.showMessageDialog(null, "To many incorrect logins\nClosing down system ", "Warning", JOptionPane.ERROR_MESSAGE);
+                                close();
+                            }
+
                             if (temppass.equals(password)) {
                                 new welcomeTemp().setVisible(true);
                                 System.out.println("Password correct.");
                                 close();
 
-                                        
-                                                                    
-                                
-                                
-                                
-                                
                             }
                         }
                     }
@@ -313,29 +321,38 @@ public class guiLogin extends javax.swing.JFrame {
     private void newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserActionPerformed
         String uName;
         String uPass;
-   
+
         uName = "henry";
         uPass = "123";
-         
-        try{
-        Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-        System.out.println("Connecting to database...");
-        
-            if (conn != null){
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            System.out.println("Connecting to database...");
+
+            if (conn != null) {
                 new newUsr().setVisible(true);
-             
+
             }
-        
-        
-        
-        
-        }
-        catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             //print out the error name 
             System.out.println(ex);
-            
+
         }
     }//GEN-LAST:event_newUserActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                setVisible(false);
+                new removeUser().setVisible(true);
+            }
+        } catch (Exception ex) {
+            System.out.println("nsdbjdfke");
+        }
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,6 +400,7 @@ public class guiLogin extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton newUser;
     private javax.swing.JPasswordField passwordtextField;
+    private javax.swing.JButton remove;
     private javax.swing.JTextField usernametextField;
     // End of variables declaration//GEN-END:variables
     private void close() {
