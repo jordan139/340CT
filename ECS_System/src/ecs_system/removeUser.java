@@ -175,7 +175,7 @@ public class removeUser extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             System.out.println("Connecting to database...");
             if (conn != null) {
-                ResultSet rs = null;
+                
                 
                 
                 if (username.equals("")) {
@@ -192,10 +192,18 @@ public class removeUser extends javax.swing.JFrame {
                     else{
                         if (passwordTextField.getText().equals(checkPassword.getText()) ){
                         try{
-                            Statement st = conn.createStatement();
-                            System.out.println("Hello");
                             String sql = "SELECT USERNAME FROM LOGIN WHERE USERNAME = '" + username + "'";
+                            Statement st = conn.createStatement();
+                            ResultSet rs = null;
                             rs = st.executeQuery(sql);
+                            
+                            while(rs.next()){
+                                tempUser = rs.getString("USERNAME");
+                            }
+                            if (tempUser.equals(username) ){
+                                String sql1 = "DELETE FROM LOGIN WHERE USERNAME = '" + username + "'";
+                            }
+                            
                             
         
                             System.out.println(sql);
