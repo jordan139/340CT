@@ -190,6 +190,9 @@ public class newUsr extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Duplicate ID has been found");
                         }
                     }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Passwords do not match!");
+                    }
 
                 }  //Statement st = conn.createStatement();
             }

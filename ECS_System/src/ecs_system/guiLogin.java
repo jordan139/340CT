@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Jordan
@@ -199,6 +200,7 @@ public class guiLogin extends javax.swing.JFrame {
                         tempuser = rs.getString("USERNAME");
                         System.out.println("Username correct.");
                         if (tempuser.equals(username)) {
+                            
                             temppass = rs.getString("PASSWORD");
 
                             // CHECK THIS !!!!!!!!!!!!!!!
