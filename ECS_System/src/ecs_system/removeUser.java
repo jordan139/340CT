@@ -45,7 +45,8 @@ public class removeUser extends javax.swing.JFrame {
         passwordTextField = new javax.swing.JTextField();
         checkPassword = new javax.swing.JTextField();
         confirm = new javax.swing.JButton();
-        passCheck = new javax.swing.JComboBox<>();
+        userType = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,10 +77,10 @@ public class removeUser extends javax.swing.JFrame {
             }
         });
 
-        passCheck.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        passCheck.addActionListener(new java.awt.event.ActionListener() {
+        userType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TUTOR", "STUDENT"}));
+        userType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passCheckActionPerformed(evt);
+                userTypeActionPerformed(evt);
             }
         });
 
@@ -102,8 +103,8 @@ public class removeUser extends javax.swing.JFrame {
                             .addComponent(usernameTextField)
                             .addComponent(passwordTextField)
                             .addComponent(checkPassword)
-                            .addComponent(passCheck, 0, 85, Short.MAX_VALUE))))
-                .addContainerGap(153, Short.MAX_VALUE))
+                            .addComponent(userType, 0, 85, Short.MAX_VALUE))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,11 +124,13 @@ public class removeUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(passCheck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(userType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(confirm)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel5.setText("Remove a User");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,11 +140,17 @@ public class removeUser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jLabel5)
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -157,9 +166,9 @@ public class removeUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextFieldActionPerformed
 
-    private void passCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passCheckActionPerformed
+    private void userTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passCheckActionPerformed
+    }//GEN-LAST:event_userTypeActionPerformed
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         String password = passwordTextField.getText();
@@ -175,51 +184,41 @@ public class removeUser extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             System.out.println("Connecting to database...");
             if (conn != null) {
-                
-                
-                
                 if (username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter a username you wish to delete");
                 } else if (password.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter a password");
-
                 } else if (password.equals("") && username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter a username and password");
+                } else if (passwordTextField.getText().equals(checkPassword.getText())) {
+                    try {
+                        String sql = "SELECT USERNAME,PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "'";
+                        Statement st = conn.createStatement();
+                        ResultSet rs = null;
+                        rs = st.executeQuery(sql);
 
-                }   
-                
-                
-                    else{
-                        if (passwordTextField.getText().equals(checkPassword.getText()) ){
-                        try{
-                            String sql = "SELECT USERNAME FROM LOGIN WHERE USERNAME = '" + username + "'";
-                            Statement st = conn.createStatement();
-                            ResultSet rs = null;
-                            rs = st.executeQuery(sql);
-                            
-                            while(rs.next()){
-                                tempUser = rs.getString("USERNAME");
-                            }
-                            if (tempUser.equals(username) ){
-                                String sql1 = "DELETE FROM LOGIN WHERE USERNAME = '" + username + "'";
-                            }
-                            
-                            
-        
-                            System.out.println(sql);
-                            //System.out.println("World");
-                        }catch(Exception ex){
-                            System.out.println("Username does not exist");
+                        while (rs.next()) {
+                            tempUser = rs.getString("USERNAME");
+                            tempPass = rs.getString("PASSWORD");
                         }
-                        }
-        
-            
-                    
+                        if (tempPass.equals(password) && tempUser.equals(username)) {
+                            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                            if (dialogResult == JOptionPane.YES_OPTION) {
+                                String sql1 = "DELETE FROM LOGIN WHERE USERNAME = '" + tempUser + "'";
+                                st.executeUpdate(sql1);
+                                System.out.println("Operation complete");
+                            }
 
+                        }
+
+                        //System.out.println("World");
+                    } catch (Exception ex) {
+                        System.out.println(ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Passwords do not match");
                 }
             }
-
-            
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -278,9 +277,10 @@ public class removeUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> passCheck;
     private javax.swing.JTextField passwordTextField;
+    private javax.swing.JComboBox<String> userType;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
