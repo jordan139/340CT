@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class GUI_ChangePass extends javax.swing.JFrame {
 
-    String connectionURL = "jdbc:derby://localhost:1527/LOGIN";
+    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
     String uName = "henry";
     String uPass = "123";
 
