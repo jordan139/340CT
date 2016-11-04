@@ -13,6 +13,7 @@ public class staff {
     
     String staffUsername;
     String staffPassword;
+    int ID;
     
     
     public String getStaffUsername(){
@@ -30,5 +31,14 @@ public class staff {
     public void setStaffPassword(String staffPassword){
         this.staffPassword = staffPassword;
     }
+    
+    public int getID(){
+        return ID;
+        
+    }
+    public void setStaffID(int ID){
+        this.ID = ID;
+    }
+   
     
 }

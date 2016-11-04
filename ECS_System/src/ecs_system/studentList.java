@@ -15,7 +15,7 @@ public class studentList {
     private student[] sList;
     private int count = 0;
 
-    private studentList() {
+    public studentList() {
 
         sList = new student[100];
         for (int i = 0; i < sList.length; i++) {
@@ -38,9 +38,9 @@ public class studentList {
 
     public void view(int ref) {
         if ((find(ref) == true) && (ref != -1)) {
-            System.out.println("Module Code: " + sList[ref].getID());
-            System.out.println("Module Title: " + sList[ref].getStudentUsername());
-            System.out.println("Module Tutor: " + sList[ref].getStudentPassword());
+            System.out.println("Student ID: " + sList[ref].getID());
+            System.out.println("Student Username: " + sList[ref].getStudentUsername());
+            System.out.println("Student Password: " + sList[ref].getStudentPassword());
 
         } else {
             System.out.println("not found ");
@@ -74,7 +74,14 @@ public class studentList {
             }
         }
         sList = tempList;
+    }
 
+    public void update(int reff, String pass) {
+        for (int i = 0; i < sList.length; i++) {
+            if (sList[i].getID() == reff) {
+                sList[i].setStudentPassword(pass);
+            }
+        }
     }
 
     public void viewAll() {
