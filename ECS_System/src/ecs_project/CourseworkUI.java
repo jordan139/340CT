@@ -47,10 +47,10 @@ public class CourseworkUI {
                         System.out.println("Please enter course title:");
                         String coursetitle = keyboard.readLine();
 
-                        System.out.println("Please enter course issue:");
+                        System.out.println("Please enter course issue(DD/MM/YYYY):");
                         String courseissue = keyboard.readLine();
 
-                        System.out.println("Please enter course due:");
+                        System.out.println("Please enter course due(DD/MM/YYYY):");
                         String coursedue = keyboard.readLine();
 
                         System.out.println("Please enter course mark(Double):");
