@@ -9,7 +9,6 @@ public class CourseworkUI {
     String demoOptions[] = {"Add an individual coursework", "Add a group coursework", "Delete an individual coursework", "Delete a group coursework", "View an individual coursework details", "View a group coursework details", "Exit the System"};
     char demoChoice;
     Menu demoMenu = new Menu("Menu ", demoOptions, "Enter the menu option: ");
-
     // ManagerController object is being initialized
     CourseworkController control = new CourseworkController();
 
@@ -22,7 +21,7 @@ public class CourseworkUI {
 
             // Stores the user's input in a String format
             BufferedReader keyboard;
-            
+
             // Checks the user's input
             switch (demoChoice) {
                 //to add an individual
@@ -31,35 +30,37 @@ public class CourseworkUI {
                         keyboard = new BufferedReader(new InputStreamReader(System.in));
 
                         //receving all the required inputs
-                        System.out.println("Please enter module code(integer): \n");
+                        System.out.println("Please enter module code(integer):");
                         String temp = keyboard.readLine();
                         int modulecode = Integer.parseInt(temp);
 
-                        System.out.println("Please enter module title: \n");
+                        System.out.println("Please enter module title:");
                         String moduletitle = keyboard.readLine();
 
-                        System.out.println("Please enter module tutor: \n");
+                        System.out.println("Please enter module tutor:");
                         String moduletutor = keyboard.readLine();
 
-                        System.out.println("Please enter course number(integer): \n");
+                        System.out.println("Please enter course number(integer):");
                         String temp1 = keyboard.readLine();
                         int courseno = Integer.parseInt(temp1);
 
-                        System.out.println("Please enter course title: \n");
+                        System.out.println("Please enter course title:");
                         String coursetitle = keyboard.readLine();
 
-                        System.out.println("Please enter course issue: \n");
+                        System.out.println("Please enter course issue:");
                         String courseissue = keyboard.readLine();
 
-                        System.out.println("Please enter course due: \n");
+                        System.out.println("Please enter course due:");
                         String coursedue = keyboard.readLine();
 
-                        System.out.println("Please enter course mark(Double): \n");
+                        System.out.println("Please enter course mark(Double):");
                         String temp2 = keyboard.readLine();
                         Double coursemark = Double.parseDouble(temp2);
 
                         control.addIndividual(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
                         reportResult("success");
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
                         System.out.println("Empty or wrong data type input detected please try again.");
                     }
@@ -72,37 +73,38 @@ public class CourseworkUI {
                         keyboard = new BufferedReader(new InputStreamReader(System.in));
 
                         //receving all the required inputs
-                        System.out.println("Please enter module code(integer): \n");
+                        System.out.println("Please enter module code(integer):");
                         String temp = keyboard.readLine();
                         int modulecode = Integer.parseInt(temp);
 
-                        System.out.println("Please enter module title: \n");
+                        System.out.println("Please enter module title:");
                         String moduletitle = keyboard.readLine();
 
-                        System.out.println("Please enter module tutor: \n");
+                        System.out.println("Please enter module tutor:");
                         String moduletutor = keyboard.readLine();
 
-                        System.out.println("Please enter course number(integer): \n");
+                        System.out.println("Please enter course number(integer):");
                         String temp1 = keyboard.readLine();
                         int courseno = Integer.parseInt(temp1);
 
-                        System.out.println("Please enter course title: \n");
+                        System.out.println("Please enter course title:");
                         String coursetitle = keyboard.readLine();
 
-                        System.out.println("Please enter course issue: \n");
+                        System.out.println("Please enter course issue:");
                         String courseissue = keyboard.readLine();
 
-                        System.out.println("Please enter course due: \n");
+                        System.out.println("Please enter course due:");
                         String coursedue = keyboard.readLine();
 
-                        System.out.println("Please enter course mark(Double): \n");
+                        System.out.println("Please enter course mark(Double):");
                         String temp2 = keyboard.readLine();
                         Double coursemark = Double.parseDouble(temp2);
 
                         control.addGroup(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
                         reportResult("success");
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
-                        System.out.println("Empty or wrong data type input detected please try again.");
                     }
                     //-------------------------------------------
                     break;
@@ -115,6 +117,8 @@ public class CourseworkUI {
                         String fromKeyboard = keyboard.readLine();
                         ref = Integer.parseInt(fromKeyboard);
                         control.deleteIndividual(ref);
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
                     }
                     //-------------------------------------------
@@ -129,6 +133,8 @@ public class CourseworkUI {
                         ref = Integer.parseInt(fromKeyboard);
                         control.deleteGroup(ref);
                         reportResult("success");
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
                     }
                     //-------------------------------------------                
@@ -143,6 +149,8 @@ public class CourseworkUI {
                         ref = Integer.parseInt(fromKeyboard);
                         control.viewIndividual(ref);
                         reportResult("success");
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
                     }
                     //-------------------------------------------                
@@ -157,6 +165,8 @@ public class CourseworkUI {
                         ref = Integer.parseInt(fromKeyboard);
                         control.viewGroup(ref);
                         reportResult("success");
+                    } catch (NumberFormatException ex) {
+                        System.out.println("Wrong data type input detected please try again.");
                     } catch (java.io.IOException exception) {
                     }
                     //-------------------------------------------                

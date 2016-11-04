@@ -14,10 +14,6 @@ public abstract class Coursework {
         this.coursedue = coursedue;
     }
     
-    public Coursework() {
-        
-    }
-
     public String getModuleTitle() {
         return moduletitle;
     }
