@@ -4,9 +4,23 @@ public class Individual extends Coursework {
 
     int coursenumber;
     String coursetitle;
+    private String moduletitle;
     String moduletutor;
     double coursemark;
     String coursetype;
+
+    Individual(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark) {
+        super(moduletitle, modulecode, courseissue, coursedue);
+        this.coursenumber = courseno;
+        this.coursetitle = coursetitle;
+        this.moduletutor = moduletutor;
+        this.coursetype = "Individual";
+        this.coursemark = coursemark;
+    }
+
+    Individual() {
+
+    }
 
     @Override
     public double getCourseMark() {
@@ -60,6 +74,6 @@ public class Individual extends Coursework {
 
     @Override
     public String toString() {
-        return modulecode + "," + moduletitle + ","+ moduletutor + "," + coursenumber + "," +  coursetitle + "," + courseissue + "," + coursedue + "," + coursetype + "," +  coursemark;
+        return modulecode + "," + moduletitle + "," + moduletutor + "," + coursenumber + "," + coursetitle + "," + courseissue + "," + coursedue + "," + coursetype + "," + coursemark + "\n";
     }
 }

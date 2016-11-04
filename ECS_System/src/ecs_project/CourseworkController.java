@@ -8,13 +8,13 @@ public class CourseworkController {
     private final GroupList list_g = new GroupList();
 
     // Adds a new Individual object.
-    public void addIndividual() {
-        list_i.add();
+    public void addIndividual(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark) {
+        list_i.add(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
     }
 
     // Adds a new Group object.
-    public void addGroup() {
-        list_g.add();
+    public void addGroup(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark) {
+        list_g.add(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
     }
 
     // Displays details of a 'Individual' object.

@@ -7,6 +7,17 @@ public abstract class Coursework {
     String courseissue;
     String coursedue;
 
+    public Coursework(String moduletitle, int modulecode, String courseissue, String coursedue) {
+        this.modulecode = modulecode;
+        this.moduletitle = moduletitle;
+        this.courseissue = courseissue;
+        this.coursedue = coursedue;
+    }
+    
+    public Coursework() {
+        
+    }
+
     public String getModuleTitle() {
         return moduletitle;
     }

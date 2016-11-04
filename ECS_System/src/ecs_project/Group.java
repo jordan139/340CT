@@ -8,6 +8,19 @@ public class Group extends Coursework {
     double coursemark;
     String coursetype;
 
+    Group(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark) {
+        super(moduletitle,modulecode,courseissue,coursedue);
+        this.coursenumber = courseno;
+        this.coursetitle = coursetitle;
+        this.moduletutor = moduletutor;
+        this.coursetype = "Group";
+        this.coursemark = coursemark;
+    }
+    
+    Group() {
+        
+    }
+    
     @Override
     public double getCourseMark() {
         return coursemark;
@@ -57,9 +70,9 @@ public class Group extends Coursework {
     public void setCourseType(String type) {
         this.coursetype = type;
     }
-
+    
     @Override
     public String toString() {
-        return modulecode + "," + moduletitle + ","+ moduletutor + "," + coursenumber + "," +  coursetitle + "," + courseissue + "," + coursedue + "," + coursetype + "," +  coursemark;
+        return modulecode + "," + moduletitle + ","+ moduletutor + "," + coursenumber + "," +  coursetitle + "," + courseissue + "," + coursedue + "," + coursetype + "," +  coursemark + "\n";
     }
 }
