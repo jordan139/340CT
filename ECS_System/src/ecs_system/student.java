@@ -9,10 +9,11 @@ package ecs_system;
  *
  * @author dayj13
  */
-public abstract class student {
+public class student {
     
     String studentUsername;
     String studentPassword;
+    int ID;
     
     
     public String getStudentUsername(){
@@ -29,6 +30,14 @@ public abstract class student {
     
     public void setStudentPassword(String studentPassword){
         this.studentPassword = studentPassword;
+    }
+   
+    public int getID(){
+        return ID;
+    }
+    
+    public void setID(int ID){
+        this.ID = ID;
     }
     
 }

@@ -217,7 +217,7 @@ public class guiLogin extends javax.swing.JFrame {
                         temppass = rs.getString("PASSWORD");
                         System.out.println("Username correct.");
                         if (tempuser.equals(username)) {
-                            // CHECK THIS !!!!!!!!!!!!!!!
+                            
                             if (!temppass.equals(password)) {
                                 wrongInput--;
                                 JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
@@ -234,7 +234,7 @@ public class guiLogin extends javax.swing.JFrame {
                                 close();
                                 wrongInput = 4;
                             }
-                        } else if (username != tempuser) {
+                        } else {
                             JOptionPane.showMessageDialog(null, "The username" + tempuser + " does not exist!");
                         }
                     }

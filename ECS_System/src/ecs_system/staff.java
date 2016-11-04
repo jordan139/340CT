@@ -9,7 +9,7 @@ package ecs_system;
  *
  * @author dayj13
  */
-public abstract class staff {
+public class staff {
     
     String staffUsername;
     String staffPassword;
