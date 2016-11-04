@@ -4,11 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class CourseworkUI {
-        // Runs the menu interface
-    String demoOptions[] = {"Add an individual coursework", "Add a group coursework", "Delete an individual coursework", "Delete a group coursework", "View an individual coursework details", "View a group coursework details", "View all individual coursework details", "View all group coursework details", "Exit the System"};
+
+    // Runs the menu interface
+    String demoOptions[] = {"Add an individual coursework", "Add a group coursework", "Delete an individual coursework", "Delete a group coursework", "View an individual coursework details", "View a group coursework details", "Exit the System"};
     char demoChoice;
     Menu demoMenu = new Menu("Menu ", demoOptions, "Enter the menu option: ");
-    
+
     // ManagerController object is being initialized
     CourseworkController control = new CourseworkController();
 
@@ -26,18 +27,86 @@ public class CourseworkUI {
             switch (demoChoice) {
                 //to add an individual
                 case 'A':
-                    control.addIndividual();
-                    reportResult("success");
+                    try {
+                        keyboard = new BufferedReader(new InputStreamReader(System.in));
+
+                        //receving all the required inputs
+                        System.out.println("Please enter module code(integer): \n");
+                        String temp = keyboard.readLine();
+                        int modulecode = Integer.parseInt(temp);
+
+                        System.out.println("Please enter module title: \n");
+                        String moduletitle = keyboard.readLine();
+
+                        System.out.println("Please enter module tutor: \n");
+                        String moduletutor = keyboard.readLine();
+
+                        System.out.println("Please enter course number(integer): \n");
+                        String temp1 = keyboard.readLine();
+                        int courseno = Integer.parseInt(temp1);
+
+                        System.out.println("Please enter course title: \n");
+                        String coursetitle = keyboard.readLine();
+
+                        System.out.println("Please enter course issue: \n");
+                        String courseissue = keyboard.readLine();
+
+                        System.out.println("Please enter course due: \n");
+                        String coursedue = keyboard.readLine();
+
+                        System.out.println("Please enter course mark(Double): \n");
+                        String temp2 = keyboard.readLine();
+                        Double coursemark = Double.parseDouble(temp2);
+
+                        control.addIndividual(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
+                        reportResult("success");
+                    } catch (java.io.IOException exception) {
+                        System.out.println("Empty or wrong data type input detected please try again.");
+                    }
                     //-------------------------------------------                
                     break;
 
                 //to add a group
                 case 'B':
-                    control.addGroup();
-                    reportResult("success");
+                    try {
+                        keyboard = new BufferedReader(new InputStreamReader(System.in));
+
+                        //receving all the required inputs
+                        System.out.println("Please enter module code(integer): \n");
+                        String temp = keyboard.readLine();
+                        int modulecode = Integer.parseInt(temp);
+
+                        System.out.println("Please enter module title: \n");
+                        String moduletitle = keyboard.readLine();
+
+                        System.out.println("Please enter module tutor: \n");
+                        String moduletutor = keyboard.readLine();
+
+                        System.out.println("Please enter course number(integer): \n");
+                        String temp1 = keyboard.readLine();
+                        int courseno = Integer.parseInt(temp1);
+
+                        System.out.println("Please enter course title: \n");
+                        String coursetitle = keyboard.readLine();
+
+                        System.out.println("Please enter course issue: \n");
+                        String courseissue = keyboard.readLine();
+
+                        System.out.println("Please enter course due: \n");
+                        String coursedue = keyboard.readLine();
+
+                        System.out.println("Please enter course mark(Double): \n");
+                        String temp2 = keyboard.readLine();
+                        Double coursemark = Double.parseDouble(temp2);
+
+                        control.addGroup(modulecode, moduletitle, moduletutor, courseno, coursetitle, courseissue, coursedue, coursemark);
+                        reportResult("success");
+                    } catch (java.io.IOException exception) {
+                        System.out.println("Empty or wrong data type input detected please try again.");
+                    }
                     //-------------------------------------------
                     break;
-                
+
                 //to delete an individual
                 case 'C':
                     try {
@@ -79,10 +148,10 @@ public class CourseworkUI {
                     //-------------------------------------------                
                     break;
 
-                 //to view a group detail
+                //to view a group detail
                 case 'F':
                     try {
-                        System.out.println("Enter an ID:");
+                        System.out.println("Enter a module code:");
                         keyboard = new BufferedReader(new InputStreamReader(System.in));
                         String fromKeyboard = keyboard.readLine();
                         ref = Integer.parseInt(fromKeyboard);
@@ -93,20 +162,8 @@ public class CourseworkUI {
                     //-------------------------------------------                
                     break;
 
-                //to view all individual details
-                case 'G':
-                    control.viewAllIndividuals();
-                    //-------------------------------------------                
-                    break;
-
-                //to view all group details
-                case 'H':
-                    control.viewAllGroups();
-                    //-------------------------------------------                
-                    break;
-
                 //to exist the system
-                case 'I':
+                case 'G':
                     System.out.println("You have exited the system.");
                     exit = false;
                     System.exit(1);
