@@ -9,8 +9,12 @@ package ecs_LoginStudent;
  *
  * @author pheon
  */
-public class helloWorld 
+public class helloWorld {
+        public String helloWorld(){
+            System.out.println("Hellow world");
+            return null;
+            
+        }
         
-        System.out.println("Hellow world");
     
 }
