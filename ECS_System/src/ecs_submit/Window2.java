@@ -49,19 +49,19 @@ public class Window2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Firsttxt = new javax.swing.JTextField();
-        Lasttxt = new javax.swing.JTextField();
+        Firstname = new javax.swing.JTextField();
+        Lastname = new javax.swing.JTextField();
         Subtxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        duedate = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        time_remaining = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        SIDtxt = new javax.swing.JTextField();
+        SIDnum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
@@ -88,9 +88,15 @@ public class Window2 extends javax.swing.JFrame {
 
         jLabel5.setText("Submission title* :");
 
-        Firsttxt.addActionListener(new java.awt.event.ActionListener() {
+        Firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FirsttxtActionPerformed(evt);
+                FirstnameActionPerformed(evt);
+            }
+        });
+
+        Subtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubtxtActionPerformed(evt);
             }
         });
 
@@ -116,31 +122,31 @@ public class Window2 extends javax.swing.JFrame {
 
         jLabel9.setText("Due date :");
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField5.setText("Day, (dd, mm, yyyy), Time");
-        jTextField5.setBorder(null);
-        jTextField5.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        jTextField5.setEnabled(false);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        duedate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        duedate.setText("Day, (dd, mm, yyyy), Time");
+        duedate.setBorder(null);
+        duedate.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        duedate.setEnabled(false);
+        duedate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                duedateActionPerformed(evt);
             }
         });
 
         jLabel10.setText("Time remaining :");
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 0, 0));
-        jTextField4.setText("0 days 0 hours");
-        jTextField4.setBorder(null);
-        jTextField4.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        jTextField4.setEnabled(false);
+        time_remaining.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        time_remaining.setForeground(new java.awt.Color(255, 0, 0));
+        time_remaining.setText("0 days 0 hours");
+        time_remaining.setBorder(null);
+        time_remaining.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        time_remaining.setEnabled(false);
 
         jLabel11.setText("SID number :");
 
-        SIDtxt.addActionListener(new java.awt.event.ActionListener() {
+        SIDnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SIDtxtActionPerformed(evt);
+                SIDnumActionPerformed(evt);
             }
         });
 
@@ -172,18 +178,18 @@ public class Window2 extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(time_remaining, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Firsttxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Firstname, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(courseCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(moduleCombo, 0, 311, Short.MAX_VALUE)
-                            .addComponent(Lasttxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Lastname, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Subtxt)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField5))
-                            .addComponent(SIDtxt)))
+                                .addComponent(duedate))
+                            .addComponent(SIDnum)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -211,22 +217,22 @@ public class Window2 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(time_remaining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SIDtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SIDnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Firsttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Lasttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -250,21 +256,25 @@ public class Window2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void FirsttxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirsttxtActionPerformed
+    private void FirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FirsttxtActionPerformed
+    }//GEN-LAST:event_FirstnameActionPerformed
 
     private void moduleComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduleComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_moduleComboActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void duedateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_duedateActionPerformed
 
-    private void SIDtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIDtxtActionPerformed
+    private void SIDnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIDnumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SIDtxtActionPerformed
+    }//GEN-LAST:event_SIDnumActionPerformed
+
+    private void SubtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubtxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,11 +319,12 @@ public class Window2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Firsttxt;
-    private javax.swing.JTextField Lasttxt;
-    private javax.swing.JTextField SIDtxt;
+    private javax.swing.JTextField Firstname;
+    private javax.swing.JTextField Lastname;
+    private javax.swing.JTextField SIDnum;
     private javax.swing.JTextField Subtxt;
     private javax.swing.JComboBox<String> courseCombo;
+    private javax.swing.JTextField duedate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -326,8 +337,7 @@ public class Window2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JComboBox<String> moduleCombo;
+    private javax.swing.JTextField time_remaining;
     // End of variables declaration//GEN-END:variables
 }
