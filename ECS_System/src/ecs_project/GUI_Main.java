@@ -40,9 +40,10 @@ public class GUI_Main extends javax.swing.JFrame {
 
                 String sql = "SELECT * FROM COURSEWORK";
                 rs = st.executeQuery(sql);
+                TextArea.append("Module Code" + "\t" + "Moduel Title" + "\t" + "Module Tutor" + "\t" + "Course No." + "\t" + "Course Title"  + "\t" + "Course Issue" + "\t" + "Course Due" + "\t" + "Course Type" + "\t" + "Course Mark\n\n");
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n\n");
                 }
             }
         } catch (SQLException ex) {
@@ -59,6 +60,7 @@ public class GUI_Main extends javax.swing.JFrame {
         AddBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
+        GenerateBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -93,6 +95,14 @@ public class GUI_Main extends javax.swing.JFrame {
         TextArea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(TextArea);
 
+        GenerateBtn.setBackground(new java.awt.Color(102, 102, 255));
+        GenerateBtn.setText("Generate Coversheet");
+        GenerateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerateBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +117,9 @@ public class GUI_Main extends javax.swing.JFrame {
                         .addComponent(RemoveBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(UpdateBtn)
-                        .addGap(0, 220, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GenerateBtn)
+                        .addGap(0, 77, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -122,7 +134,8 @@ public class GUI_Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddBtn)
                     .addComponent(RemoveBtn)
-                    .addComponent(UpdateBtn))
+                    .addComponent(UpdateBtn)
+                    .addComponent(GenerateBtn))
                 .addContainerGap())
         );
 
@@ -148,6 +161,12 @@ public class GUI_Main extends javax.swing.JFrame {
         GUI_Add r = new GUI_Add();
         r.setVisible(true);
     }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void GenerateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateBtnActionPerformed
+        setVisible(false);
+        GUI_Generate r = new GUI_Generate();
+        r.setVisible(true);
+    }//GEN-LAST:event_GenerateBtnActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -190,6 +209,7 @@ public class GUI_Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
+    private javax.swing.JButton GenerateBtn;
     private javax.swing.JButton RemoveBtn;
     private javax.swing.JTextArea TextArea;
     private javax.swing.JButton UpdateBtn;
