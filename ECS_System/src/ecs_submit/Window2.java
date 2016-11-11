@@ -6,46 +6,51 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Window2 extends javax.swing.JFrame {
 
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
+public class Window2 extends javax.swing.JFrame {
+    
+    String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
     String uName = "jey";
     String uPass = "123";
 
+    /**
+     * Creates new form Window1
+     */
+
     public Window2() {
         initComponents();
-
+           
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             System.out.println("Connect to database...");
-
             if (conn != null) {
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
-                String sql = "SELECT COURSETITLE FROM COURSEWORK";
+                String sql = "SELECT TITLE FROM COURSE";
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    courseCombo.addItem(rs.getString("COURSETITLE"));
+                    Combo1.addItem(rs.getString("TITLE"));
                 }
-                String sql2 = "SELECT MODULETITLE FROM COURSEWORK";
+                rs = null;
+                String sql2 = "SELECT MTITLE FROM MODULE ";
                 rs = st.executeQuery(sql2);
                 while (rs.next()) {
-                    moduleCombo.addItem(rs.getString("MODULETITLE"));
+                    Combo2.addItem(rs.getString("MTITLE"));
                 }
+                
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        courseCombo = new javax.swing.JComboBox<>();
+        Combo1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        moduleCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -62,25 +67,20 @@ public class Window2 extends javax.swing.JFrame {
         time_remaining = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         SIDnum = new javax.swing.JTextField();
+        Combo2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
 
         jLabel1.setText("Select Course :");
 
-        courseCombo.addActionListener(new java.awt.event.ActionListener() {
+        Combo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseComboActionPerformed(evt);
+                Combo1ActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Select Module :");
-
-        moduleCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moduleComboActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("First Name :");
 
@@ -150,15 +150,18 @@ public class Window2 extends javax.swing.JFrame {
             }
         });
 
+        Combo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Combo2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,19 +184,22 @@ public class Window2 extends javax.swing.JFrame {
                                 .addComponent(time_remaining, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Firstname, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(courseCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(moduleCombo, 0, 311, Short.MAX_VALUE)
+                            .addComponent(Combo1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Lastname, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Subtxt)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(duedate))
-                            .addComponent(SIDnum)))
+                                .addComponent(duedate, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addComponent(SIDnum)
+                            .addComponent(Combo2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel8)
@@ -209,12 +215,12 @@ public class Window2 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(moduleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,7 +228,7 @@ public class Window2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(time_remaining, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SIDnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
@@ -248,9 +254,9 @@ public class Window2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseComboActionPerformed
+    private void Combo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo1ActionPerformed
+        
+    }//GEN-LAST:event_Combo1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -259,10 +265,6 @@ public class Window2 extends javax.swing.JFrame {
     private void FirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FirstnameActionPerformed
-
-    private void moduleComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moduleComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moduleComboActionPerformed
 
     private void duedateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedateActionPerformed
         // TODO add your handling code here:
@@ -275,6 +277,10 @@ public class Window2 extends javax.swing.JFrame {
     private void SubtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SubtxtActionPerformed
+
+    private void Combo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Combo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Combo2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,11 +325,12 @@ public class Window2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Combo1;
+    private javax.swing.JComboBox<String> Combo2;
     private javax.swing.JTextField Firstname;
     private javax.swing.JTextField Lastname;
     private javax.swing.JTextField SIDnum;
     private javax.swing.JTextField Subtxt;
-    private javax.swing.JComboBox<String> courseCombo;
     private javax.swing.JTextField duedate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -337,7 +344,6 @@ public class Window2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JComboBox<String> moduleCombo;
     private javax.swing.JTextField time_remaining;
     // End of variables declaration//GEN-END:variables
 }

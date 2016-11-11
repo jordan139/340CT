@@ -5,6 +5,12 @@
  */
 package ecs_submit;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 /**
  *
@@ -15,9 +21,37 @@ public class Window4 extends javax.swing.JFrame {
     /**
      * Creates new form Window1
      */
+    String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
+    String uName = "jey";
+    String uPass = "123";
+    
     public Window4() {
         initComponents();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            System.out.println("Connect to database...");
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+                String sql = "SELECT TITLE FROM COURSE";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    jComboBox1.addItem(rs.getString("TITLE"));
+                }
+                rs = null;
+                String sql2 = "SELECT MODULETITLE FROM ";
+                rs = st.executeQuery(sql2);
+                while (rs.next()) {
+                    jComboBox2.addItem(rs.getString("MODULETITLE"));
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
