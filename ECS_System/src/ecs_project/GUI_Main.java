@@ -40,7 +40,7 @@ public class GUI_Main extends javax.swing.JFrame {
 
                 String sql = "SELECT * FROM COURSEWORK";
                 rs = st.executeQuery(sql);
-                TextArea.append("Module Code" + "\t" + "Moduel Title" + "\t" + "Module Tutor" + "\t" + "Course No." + "\t" + "Course Title"  + "\t" + "Course Issue" + "\t" + "Course Due" + "\t" + "Course Type" + "\t" + "Course Mark\n\n");
+                TextArea.append("Module Code" + "\t" + "Module Title" + "\t" + "Module Tutor" + "\t" + "Course No." + "\t" + "Course Title"  + "\t" + "Course Issue" + "\t" + "Course Due" + "\t" + "Course Type" + "\t" + "Course Mark\n\n");
                 while (rs.next()) {
                     TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
                             + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n\n");
