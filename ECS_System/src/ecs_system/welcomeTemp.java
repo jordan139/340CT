@@ -9,6 +9,8 @@ package ecs_system;
  *
  * @author Jordan
  */
+
+// temp login screen to direct buttons untill all funtionality has been finished 
 public class welcomeTemp extends javax.swing.JFrame {
 
     /**
@@ -150,6 +152,7 @@ public class welcomeTemp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //create a new instance of the welcome temp screen set visibility to true 
                 new welcomeTemp().setVisible(true);
             }
         });

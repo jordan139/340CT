@@ -171,27 +171,38 @@ public class removeUser extends javax.swing.JFrame {
     }//GEN-LAST:event_userTypeActionPerformed
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
+        
+        //get text which has been inputted into the gui
         String password = passwordTextField.getText();
         String username = usernameTextField.getText();
         String checkPass = checkPassword.getText();
+        
+        //credentials used to log into the database which holds all the data
         String uName = "henry";
         String uPass = "123";
+        
+        //temp user and password passed as empty strings 
         String tempUser = "";
         String tempPass = "";
+        
+        //connection url used to locate where the database is currently saved 
         String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
         try {
-            //try for an error 
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connecting to database...");
-            if (conn != null) {
-                if (username.equals("")) {
+            //try for an error
+            //try connecting to the database
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass); //new instance connection 
+            System.out.println("Connecting to database..."); //inform user trying to connect to the database
+            //if a secure connection has been made 
+            if (conn != null) {  // run this code 
+                if (username.equals("")) { // if username field is empty return error
                     JOptionPane.showMessageDialog(null, "Enter a username you wish to delete");
-                } else if (password.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Enter a password");
+                } else if (password.equals("")) { // is password field is empty return error 
+                    JOptionPane.showMessageDialog(null, "Enter a password"); // 
                 } else if (password.equals("") && username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter a username and password");
                 } else if (passwordTextField.getText().equals(checkPassword.getText())) {
                     try {
+                        //run following sql statement to retrieve data from database 
                         String sql = "SELECT USERNAME,PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "'";
                         Statement st = conn.createStatement();
                         ResultSet rs = null;
@@ -221,6 +232,8 @@ public class removeUser extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
+            
+            //catch any error and throw this excpetion error message
             System.out.println(ex);
         }
 

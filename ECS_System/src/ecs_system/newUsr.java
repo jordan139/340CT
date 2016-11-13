@@ -159,7 +159,8 @@ public class newUsr extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
-
+        
+        // get data passed into gui fields 
         String username = newUser.getText();
         String password = checkPass.getText();
         //empty string 
@@ -167,36 +168,49 @@ public class newUsr extends javax.swing.JFrame {
         String temppass = "";
 
         try {
+            //try connecting to the database 
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-
+            
+            //if it connections run following code
             if (conn != null) {
+                // run if both username and passsword field are empty 
                 if (username.equals("") && password.equals("")) {
                     JOptionPane.showMessageDialog(null, "Username & password is required");
+                    //run if password field is empty
                 } else if (password.equals("")) {
                     JOptionPane.showMessageDialog(null, "Password is required");
+                    //run if username is empty 
                 } else if (username.equals("")) {
                     JOptionPane.showMessageDialog(null, "Username is required");
                 } else {
+                    //if both password and password checker are = to the same run 
                     if (pass.getText().equals(checkPass.getText())) {
                         try{
+                            //try catching errors which occur
+                        //insert new user into the database 
                         String sql = "INSERT INTO LOGIN VALUES (" + Integer.parseInt(IDtxt.getText()) + ",'" + newUser.getText() + "'" + "," + "'" + pass.getText() + "'" + "," + "'" + "TUTOR" + "')";
                         Statement st = conn.createStatement();
                         ResultSet rs = null;
+                        //execute sql command 
                         st.executeUpdate(sql);
                         JOptionPane.showMessageDialog(null, "New user has created");
                         setVisible(false);
+                        //create new instance of gui login (return back to homescreen)
                         new guiLogin().setVisible(true);
                         } catch(Exception ex) {
+                            //catch any error and throw following exception 
                             JOptionPane.showMessageDialog(null, "Duplicate ID has been found");
                         }
                     }
                     else {
+                        //if both passwords do not match 
                         JOptionPane.showMessageDialog(null, "Passwords do not match!");
                     }
 
                 }  //Statement st = conn.createStatement();
             }
         } catch (SQLException ex) {
+            //catch errors and throw follwoing error message out 
             System.out.println(ex);
         }
 
