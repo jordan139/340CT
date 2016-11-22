@@ -1,38 +1,37 @@
 package ecs_report;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class GUI_Report extends javax.swing.JFrame {
 
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
-    String uName = "henry";
-    String uPass = "123";
+    reportController r = new reportController();
 
     public GUI_Report() {
         initComponents();
+        for (int i = 0; i < r.getStudentIDs().size(); i++) {
+            comboIDs.addItem(r.getStudentIDs().get(i).toString());
+        }
+
+        for (int i = 0; i < r.getCourseTitles().size(); i++) {
+            comboTitles.addItem(r.getCourseTitles().get(i).toString());
+        }
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
-        idText = new javax.swing.JTextField();
+        TextArea = new javax.swing.JTextArea();
         generateBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        comboIDs = new javax.swing.JComboBox();
+        comboTitles = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Student ID:");
-
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        jScrollPane1.setViewportView(textArea);
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane1.setViewportView(TextArea);
 
         generateBtn.setText("Generate Report");
         generateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -41,6 +40,14 @@ public class GUI_Report extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Student IDs:");
+
+        jLabel3.setText("Course Titles:");
+
+        comboIDs.setBorder(null);
+
+        comboTitles.setBorder(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -48,15 +55,19 @@ public class GUI_Report extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 212, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(generateBtn)))
+                        .addComponent(generateBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboIDs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -64,8 +75,10 @@ public class GUI_Report extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(comboIDs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -77,24 +90,9 @@ public class GUI_Report extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void generateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateBtnActionPerformed
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-
-            int id = Integer.parseInt(idText.getText());
-            if (conn != null) {
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                textArea.setText("");
-                String sql = "SELECT * FROM SUBMISSION WHERE STUDENT_ID = " + id;
-                rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    textArea.append("Student ID: " + rs.getInt("STUDENT_ID") + "\n" + "First name: " + rs.getString("FIRSTNAME") + "\n"
-                            + "Last name: " + rs.getString("LASTNAME") + "\n" + "Course detail: " + rs.getString("COVERSHEET") + "\n");
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+        String ID = comboIDs.getSelectedItem().toString();
+        String title = comboTitles.getSelectedItem().toString();
+        TextArea.append(r.generateReport(ID, title));
     }//GEN-LAST:event_generateBtnActionPerformed
 
     public static void main(String args[]) {
@@ -131,10 +129,14 @@ public class GUI_Report extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea TextArea;
+    private javax.swing.JComboBox comboIDs;
+    private javax.swing.JComboBox comboTitles;
+    private javax.swing.JComboBox<String> courseCombo;
+    private javax.swing.JComboBox<String> courseCombo1;
     private javax.swing.JButton generateBtn;
-    private javax.swing.JTextField idText;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
