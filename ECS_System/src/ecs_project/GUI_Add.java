@@ -2,14 +2,10 @@ package ecs_project;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class GUI_Add extends javax.swing.JFrame {
 
+    CourseworkController r = new CourseworkController();
     int modulecode;
     double coursemark;
     int coursenumber;
@@ -20,32 +16,12 @@ public class GUI_Add extends javax.swing.JFrame {
     String courseissue;
     String coursetype;
     String coursedue;
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
-    String uName = "henry";
-    String uPass = "123";
 
     public GUI_Add() {
         initComponents();
         TextArea.setEnabled(false);
-
-        //ConnectionURL, username and password should be specified in getConnection()       
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
-
-            if (conn != null) {
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-
-                String sql = "SELECT * FROM COURSEWORK";
-                rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        for (int i = 0; i < r.getAll().size(); i++) {
+            TextArea.append(r.getAll().get(i).toString());
         }
     }
 
@@ -244,38 +220,28 @@ public class GUI_Add extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                coursemark = Double.parseDouble(Courseduetxt1.getText());
-                coursenumber = Integer.parseInt(Coursenumbertxt.getText());
-                moduletitle = Moduletitletxt.getText();
-                coursetitle = Coursetitletxt.getText();
-                moduletutor = Moduletutortxt.getText();
-                courseissue = Courseissuetxt.getText();
-                modulecode = Integer.parseInt(Modulecodetxt.getText());
-                coursetype = TypeCombo.getSelectedItem().toString();
-                coursedue = Courseduetxt.getText();
-                String sql = "INSERT INTO COURSEWORK VALUES (" + modulecode + ", '" + moduletitle + "', '" + moduletutor + "', " + coursenumber + ", '" + coursetitle + "', '" + courseissue + "', '" + courseissue + "', '" + coursetype + "', " + coursemark + ")";
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
+        Group g;
+        Individual i;
+        modulecode = Integer.parseInt(Modulecodetxt.getText());
+        moduletitle = Moduletitletxt.getText();
+        moduletutor = Moduletutortxt.getText();
+        coursenumber = Integer.parseInt(Coursenumbertxt.getText());
+        coursetitle = Coursetitletxt.getText();
+        courseissue = Courseissuetxt.getText();
+        coursedue = Courseduetxt.getText();
+        coursetype = TypeCombo.getSelectedItem().toString();
+        coursemark = Double.parseDouble(Courseduetxt1.getText());
 
-                sql = "SELECT * FROM COURSEWORK";
-                rs = st.executeQuery(sql);
-                TextArea.setText("");
-                while (rs.next()) {
-                    TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
-                }
-                emptyTextfields();
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty fields.");
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        if (coursetype.equals("Individual")) {
+            r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+        } else {
+            r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+        }
+        emptyTextfields();
+        TextArea.setText("");
+        for (int a = 0; a < r.getAll().size(); a++) {
+            TextArea.append(r.getAll().get(a).toString());
         }
     }//GEN-LAST:event_AddBtnActionPerformed
 

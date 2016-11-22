@@ -2,42 +2,17 @@ package ecs_project;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class GUI_Remove extends javax.swing.JFrame {
 
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
-    String uName = "henry";
-    String uPass = "123";
+    CourseworkController r = new CourseworkController();
     int modulecode;
 
     public GUI_Remove() {
         initComponents();
         TextArea.setEnabled(false);
-        //disableTextfields();
-
-        //ConnectionURL, username and password should be specified in getConnection()       
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
-
-            if (conn != null) {
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-
-                String sql = "SELECT * FROM COURSEWORK";
-                rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        for (int i = 0; i < r.getAll().size(); i++) {
+            TextArea.append(r.getAll().get(i).toString());
         }
     }
 
@@ -123,28 +98,12 @@ public class GUI_Remove extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                modulecode = Integer.parseInt(Modulecodetxt.getText());
-                String sql = "DELETE FROM COURSEWORK WHERE MODULE_CODE = " + modulecode;
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-
-                sql = "SELECT * FROM COURSEWORK";
-                rs = st.executeQuery(sql);
-                TextArea.setText("");
-                while (rs.next()) {
-                    TextArea.append(rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n");
-                }
-                emptyTextfields();
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty field of Module Code.");
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        modulecode = Integer.parseInt(Modulecodetxt.getText());
+        r.removeCoursework(modulecode);
+        emptyTextfields();
+        TextArea.setText("");
+        for (int i = 0; i < r.getAll().size(); i++) {
+            TextArea.append(r.getAll().get(i).toString());
         }
     }//GEN-LAST:event_RemoveBtnActionPerformed
 
