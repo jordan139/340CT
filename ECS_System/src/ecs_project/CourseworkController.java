@@ -19,7 +19,6 @@ public class CourseworkController {
         //ConnectionURL, username and password should be specified in getConnection()       
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
 
             if (conn != null) {
                 Statement st = conn.createStatement();
@@ -29,7 +28,7 @@ public class CourseworkController {
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
                     temp = rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n";
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n";
                     courseworks.add(temp);
                 }
             }
@@ -77,7 +76,7 @@ public class CourseworkController {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             try {
-                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_DATE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
+                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_ISSUE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -93,7 +92,7 @@ public class CourseworkController {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             try {
-                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_DATE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
+                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_ISSUE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -133,7 +132,7 @@ public class CourseworkController {
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
                     coversheet = ("Coversheet has been generated..." + "\n\n" + "Module code: " + rs.getInt("MODULE_CODE") + "\n" + "Module title: " + rs.getString("MODULE_TITLE") + "\n"
-                            + "Module tutor: " + rs.getString("MODULE_TUTOR") + "\n" + "Course number: " + rs.getString("COURSE_NO") + "\n" + "Course title: " + rs.getString("COURSE_TITLE") + "\n" + "Course issue: " + rs.getDate("COURSE_DATE")
+                            + "Module tutor: " + rs.getString("MODULE_TUTOR") + "\n" + "Course number: " + rs.getString("COURSE_NO") + "\n" + "Course title: " + rs.getString("COURSE_TITLE") + "\n" + "Course issue: " + rs.getDate("COURSE_ISSUE")
                             + "\n" + "Course due: " + rs.getDate("COURSE_DUE") + "\n" + "Course type: " + rs.getString("COURSE_TYPE") + "\n" + "Course mark: " + rs.getDouble("COURSE_MARK") + "\n");
                 }
             }
@@ -149,7 +148,6 @@ public class CourseworkController {
         //ConnectionURL, username and password should be specified in getConnection()       
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
 
             if (conn != null) {
                 Statement st = conn.createStatement();
