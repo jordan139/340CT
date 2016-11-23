@@ -1,11 +1,22 @@
 package ecs_project;
 
+import java.time.LocalDateTime;
+
 public abstract class Coursework {
 
     String moduletitle;
     int modulecode;
     String courseissue;
     String coursedue;
+    String createinfo;
+
+    public Coursework(String moduletitle, int modulecode, String courseissue, String coursedue, String createinfo) {
+        this.modulecode = modulecode;
+        this.moduletitle = moduletitle;
+        this.courseissue = courseissue;
+        this.coursedue = coursedue;
+        this.createinfo = createinfo;
+    }
 
     public Coursework(String moduletitle, int modulecode, String courseissue, String coursedue) {
         this.modulecode = modulecode;
@@ -13,7 +24,7 @@ public abstract class Coursework {
         this.courseissue = courseissue;
         this.coursedue = coursedue;
     }
-    
+
     public String getModuleTitle() {
         return moduletitle;
     }
@@ -44,6 +55,10 @@ public abstract class Coursework {
 
     public String getCourseDue() {
         return coursedue;
+    }
+
+    public String getCreateInfo() {
+        return null;
     }
 
     public double getCourseMark() {

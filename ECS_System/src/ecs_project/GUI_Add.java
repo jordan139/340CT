@@ -2,9 +2,12 @@ package ecs_project;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GUI_Add extends javax.swing.JFrame {
 
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
     CourseworkController r = new CourseworkController();
     int modulecode;
     double coursemark;
@@ -16,6 +19,7 @@ public class GUI_Add extends javax.swing.JFrame {
     String courseissue;
     String coursetype;
     String coursedue;
+    String submitinfo;
 
     public GUI_Add() {
         initComponents();
@@ -232,11 +236,17 @@ public class GUI_Add extends javax.swing.JFrame {
         coursedue = Courseduetxt.getText();
         coursetype = TypeCombo.getSelectedItem().toString();
         coursemark = Double.parseDouble(Courseduetxt1.getText());
+        LocalDateTime now = LocalDateTime.now();
+        String[] temp;
+        submitinfo = dtf.format(now);
+        //temp = dtf.format(now).split(" ");
+        //submitinfo = temp[0];
 
+        System.out.println(submitinfo);
         if (coursetype.equals("Individual")) {
-            r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+            r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
         } else {
-            r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+            r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
         }
         emptyTextfields();
         TextArea.setText("");

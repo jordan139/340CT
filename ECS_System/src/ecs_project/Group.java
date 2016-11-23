@@ -1,5 +1,7 @@
 package ecs_project;
 
+import java.time.LocalDateTime;
+
 public class Group extends Coursework {
 
     int coursenumber = 0;
@@ -8,12 +10,25 @@ public class Group extends Coursework {
     double coursemark = 0.0;
     String coursetype = "Group";
 
+    Group(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark, String submitinfo) {
+        super(moduletitle, modulecode, courseissue, coursedue, submitinfo);
+        this.coursenumber = courseno;
+        this.coursetitle = coursetitle;
+        this.moduletutor = moduletutor;
+        this.coursemark = coursemark;
+    }
+
     Group(int modulecode, String moduletitle, String moduletutor, int courseno, String coursetitle, String courseissue, String coursedue, double coursemark) {
         super(moduletitle, modulecode, courseissue, coursedue);
         this.coursenumber = courseno;
         this.coursetitle = coursetitle;
         this.moduletutor = moduletutor;
         this.coursemark = coursemark;
+    }
+
+    @Override
+    public String getCreateInfo() {
+        return createinfo;
     }
 
     @Override

@@ -28,7 +28,10 @@ public class CourseworkController {
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
                     temp = rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" + rs.getDouble("COURSE_MARK") + "\n";
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" 
+                            + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" 
+                            + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" 
+                            + rs.getDouble("COURSE_MARK") +  "\t" + rs.getString("COURSE_CREATION") + "\n";
                     courseworks.add(temp);
                 }
             }
@@ -43,7 +46,7 @@ public class CourseworkController {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             try {
-                String sql = "INSERT INTO COURSEWORK VALUES (" + g.modulecode + ", '" + g.moduletitle + "', '" + g.moduletutor + "', " + g.coursenumber + ", '" + g.coursetitle + "', '" + g.courseissue + "', '" + g.courseissue + "', '" + g.coursetype + "', " + g.coursemark + ")";
+                String sql = "INSERT INTO COURSEWORK VALUES (" + g.modulecode + ", '" + g.moduletitle + "', '" + g.moduletutor + "', " + g.coursenumber + ", '" + g.coursetitle + "', '" + g.courseissue + "', '" + g.courseissue + "', '" + g.coursetype + "', " + g.coursemark + ", '" + g.createinfo + "')";
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -60,7 +63,7 @@ public class CourseworkController {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             try {
-                String sql = "INSERT INTO COURSEWORK VALUES (" + i.modulecode + ", '" + i.moduletitle + "', '" + i.moduletutor + "', " + i.coursenumber + ", '" + i.coursetitle + "', '" + i.courseissue + "', '" + i.courseissue + "', '" + i.coursetype + "', " + i.coursemark + ")";
+                String sql = "INSERT INTO COURSEWORK VALUES (" + i.modulecode + ", '" + i.moduletitle + "', '" + i.moduletutor + "', " + i.coursenumber + ", '" + i.coursetitle + "', '" + i.courseissue + "', '" + i.courseissue + "', '" + i.coursetype + "', " + i.coursemark + ", '" + i.createinfo + "')";
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
@@ -133,7 +136,7 @@ public class CourseworkController {
                 while (rs.next()) {
                     coversheet = ("Coversheet has been generated..." + "\n\n" + "Module code: " + rs.getInt("MODULE_CODE") + "\n" + "Module title: " + rs.getString("MODULE_TITLE") + "\n"
                             + "Module tutor: " + rs.getString("MODULE_TUTOR") + "\n" + "Course number: " + rs.getString("COURSE_NO") + "\n" + "Course title: " + rs.getString("COURSE_TITLE") + "\n" + "Course issue: " + rs.getDate("COURSE_ISSUE")
-                            + "\n" + "Course due: " + rs.getDate("COURSE_DUE") + "\n" + "Course type: " + rs.getString("COURSE_TYPE") + "\n" + "Course mark: " + rs.getDouble("COURSE_MARK") + "\n");
+                            + "\n" + "Course due: " + rs.getDate("COURSE_DUE") + "\n" + "Course type: " + rs.getString("COURSE_TYPE") + "\n" + "Course mark: " + rs.getDouble("COURSE_MARK") + "\n") + "Course created: " + rs.getString("COURSE_CREATION");
                 }
             }
         } catch (SQLException ex) {
