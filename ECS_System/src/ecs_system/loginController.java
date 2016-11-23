@@ -42,9 +42,10 @@ public class loginController {
                             tempuser = rs.getString("USERNAME");
                             temppass = rs.getString("PASSWORD");
                             System.out.println("Username correct.");
+                            status = true;
                             if (tempuser.equals(username)) {
                                 if (!temppass.equals(password)) {
-                                    wrongInput--;
+                                    wrongInput = wrongInput -1;
                                     JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
                                     System.out.println(wrongInput);
                                 }
