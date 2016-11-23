@@ -1,67 +1,220 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecs_system;
 
-/**
- *
- * @author dayj13
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 public class loginController {
+
+    String commandline;
+    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
+    String uName = "henry";
+    String uPass = "123";
+    int wrongInput = 4;
     
-    
-     // Two lists are initialised, one that stores 'Individual' class objects.
-    // and the other that stores 'Group' class objects.
-    private final studentList sList = new studentList();
-    private final staffList staffList = new staffList();
+    public boolean loginEnter(String password, String username) {
+        boolean status = false;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            System.out.println("Connected to database...");
+            //empty string 
+            String tempuser = "";
+            String temppass = "";
 
-    // Adds a new Individual object.
-    public void addStaff() {
-        staffList.add();
+            try {
+                //try for an error 
+                conn = DriverManager.getConnection(connectionURL, uName, uPass);
+                //if DB connects run the following code
+                if (conn != null) {
+                    if (username.equals("")) {
+                        JOptionPane.showMessageDialog(null, "Username Required");
+                    } else if (password.equals("")) {
+                        JOptionPane.showMessageDialog(null, "Password Required");
+                    } else {
+                        String sql = "SELECT USERNAME, PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
+                        Statement st = conn.createStatement();
+                        ResultSet rs = null;
+                        rs = st.executeQuery(sql);
+                        while (rs.next()) {
+                            tempuser = rs.getString("USERNAME");
+                            temppass = rs.getString("PASSWORD");
+                            System.out.println("Username correct.");
+                            if (tempuser.equals(username)) {
+                                if (!temppass.equals(password)) {
+                                    wrongInput--;
+                                    JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
+                                    System.out.println(wrongInput);
+                                }
+                                if (wrongInput == 1) {
+                                    JOptionPane.showMessageDialog(null, "Final Attempt ", "Warning", JOptionPane.ERROR_MESSAGE);
+                                } else if (wrongInput == 0) {
+                                    JOptionPane.showMessageDialog(null, "To many incorrect logins\nClosing down system ", "Warning", JOptionPane.ERROR_MESSAGE);
+                                    status = true;
+                                } else if (temppass.equals(password)) {
+                                    new welcomeTemp().setVisible(true);
+                                    System.out.println("Password correct.");
+                                    wrongInput = 4;
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "The username" + tempuser + " does not exist!");
+                            }
+                        }
+                    }
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            //if error has been thrown catch it 
+        } catch (SQLException ex) {
+            //print out the error name 
+            System.out.println(ex);
+        }
+        return status;
     }
 
-    // Adds a new Group object.
-    public void addStudent() {
-        sList.add();
-        
+    public boolean newUserConfirm(String username, String id, String password, String checkpass) {
+        //empty string 
+        String tempuser = "";
+        String temppass = "";
+        boolean status = true;
+
+        try {
+            //try connecting to the database 
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            //if it connections run following code
+            if (conn != null) {
+                // run if both username and passsword field are empty 
+                if (username.equals("") && password.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Username & password is required");
+                    //run if password field is empty
+                } else if (password.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Password is required");
+                    //run if username is empty 
+                } else if (username.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Username is required");
+                } else {
+                    //if both password and password checker are = to the same run 
+                    if (password.equals(checkpass)) {
+                        try {
+                            //try catching errors which occur
+                            //insert new user into the database 
+                            String sql = "INSERT INTO LOGIN VALUES (" + Integer.parseInt(id) + ",'" + username + "'" + "," + "'" + password + "'" + "," + "'" + "TUTOR" + "')";
+                            Statement st = conn.createStatement();
+                            ResultSet rs = null;
+                            //execute sql command 
+                            st.executeUpdate(sql);
+                            JOptionPane.showMessageDialog(null, "New user has created");
+                            status = false;
+                            //create new instance of gui login (return back to homescreen)
+                            new guiLogin().setVisible(true);
+                        } catch (Exception ex) {
+                            //catch any error and throw following exception 
+                            JOptionPane.showMessageDialog(null, "Duplicate ID has been found");
+                        }
+                    } else {
+                        //if both passwords do not match 
+                        JOptionPane.showMessageDialog(null, "Passwords do not match!");
+                    }
+
+                }  //Statement st = conn.createStatement();
+            }
+        } catch (SQLException ex) {
+            //catch errors and throw follwoing error message out 
+            System.out.println(ex);
+        }
+        return status;
     }
 
-    // Displays details of a 'Individual' object.
-    public void viewStaff(int ref) {
-        staffList.view(ref);
+    public void removeUser(String password, String username, String checkPass) {
+
+        String tempUser = "";
+        String tempPass = "";
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass); //new instance connection 
+            System.out.println("Connecting to database..."); //inform user trying to connect to the database
+            //if a secure connection has been made 
+            if (conn != null) {  // run this code 
+                if (username.equals("")) { // if username field is empty return error
+                    JOptionPane.showMessageDialog(null, "Enter a username you wish to delete");
+                } else if (password.equals("")) { // is password field is empty return error 
+                    JOptionPane.showMessageDialog(null, "Enter a password"); // 
+                } else if (password.equals("") && username.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Enter a username and password");
+                } else if (password.equals(checkPass)) {
+                    try {
+                        //run following sql statement to retrieve data from database 
+                        String sql = "SELECT USERNAME,PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "' AND PASSWORD = '" + password + "'";
+                        Statement st = conn.createStatement();
+                        ResultSet rs = null;
+                        rs = st.executeQuery(sql);
+
+                        while (rs.next()) {
+                            tempUser = rs.getString("USERNAME");
+                            tempPass = rs.getString("PASSWORD");
+                        }
+                        if (tempPass.equals(password) && tempUser.equals(username)) {
+                            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                            if (dialogResult == JOptionPane.YES_OPTION) {
+                                String sql1 = "DELETE FROM LOGIN WHERE USERNAME = '" + tempUser + "'";
+                                st.executeUpdate(sql1);
+                                System.out.println("Operation complete");
+                            }
+
+                        }
+                        //System.out.println("World");
+                    } catch (Exception ex) {
+                        System.out.println(ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Passwords do not match");
+                }
+            }
+
+        } catch (Exception ex) {
+
+            //catch any error and throw this excpetion error message
+            System.out.println(ex);
+        }
     }
 
-    // Displays details of a 'Group' object.
-    public void viewStudent(int ref) {
-        sList.view(ref);
-    }
+    public void okButtonClicked(String username, String currentpass, String newpass, String confirmpass) {
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            String tempuser = "";
+            String tempcurpass = "";
 
-    // Removes a 'Individual' object from the list.
-    public void deleteStaff(int ref) {
-        staffList.delete(ref);
+            if (username.equals("") || currentpass.equals("") || newpass.equals("") || confirmpass.equals("")) {
+                System.out.println("All the textfields require input...");
+            } else if (!newpass.equals(confirmpass)) {
+                System.out.println("Passwords do not match...");
+            } else {
+                try {
+                    String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
+                    Statement st = conn.createStatement();
+                    ResultSet rs = null;
+                    rs = st.executeQuery(sql);
+                    while (rs.next()) {
+                        tempcurpass = rs.getString("PASSWORD");
+                    }
+                    if (tempcurpass.equals(currentpass)) {
+                        String sql1 = "UPDATE LOGIN SET PASSWORD = '" + newpass + "' WHERE USERNAME = '" + username + "'";
+                        st.executeUpdate(sql1);
+                        System.out.println("Password for " + username + " successfully changed.");
+                    } else {
+                        System.out.println("Passwords do not match...");
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                    System.out.println("Username doesn't exist...");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
-
-    // Removes a 'Group' object from the list.
-    public void deleteStudent(int ref) {
-        sList.delete(ref);
-    }
-
-    // Displays details of all the 'Individual' objects within the list.
-    public void viewAllStaff() {
-        staffList.viewAll();
-    }
-
-    // Displays details of all the 'Group' objects within the list.
-    public void viewAllStudent() {
-        sList.viewAll();
-    }
-    
-    public void updateStaff(int reff, String pass){
-        staffList.update(reff, pass);
-    }
-    public void updateStudent(int reff, String pass){
-        sList.update(reff, pass);
-}
 }

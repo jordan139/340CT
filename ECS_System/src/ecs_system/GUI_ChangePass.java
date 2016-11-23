@@ -1,26 +1,12 @@
 package ecs_system;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class GUI_ChangePass extends javax.swing.JFrame {
 
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
-    String uName = "henry";
-    String uPass = "123";
-
+    loginController r = new loginController();
+    
     public GUI_ChangePass() {
         initComponents();
 
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -121,44 +107,12 @@ public class GUI_ChangePass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-
-            String user = Usernametxt.getText();
-            String curpass = Currentpasstxt.getText();
-            String newpass = Newpasstxt.getText();
-            String confirmpass = Confirmpasstxt.getText();
-            String tempuser = "";
-            String tempcurpass = "";
-
-            if (user.equals("") || curpass.equals("") || newpass.equals("") || confirmpass.equals("")) {
-                System.out.println("All the textfields require input...");
-            } else if (!newpass.equals(confirmpass)) {
-                System.out.println("Passwords do not match...");
-            } else {
-                try {
-                    String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + user + "'";
-                    Statement st = conn.createStatement();
-                    ResultSet rs = null;
-                    rs = st.executeQuery(sql);
-                    while (rs.next()) {
-                        tempcurpass = rs.getString("PASSWORD");
-                    }
-                    if (tempcurpass.equals(curpass)) {
-                        String sql1 = "UPDATE LOGIN SET PASSWORD = '" + newpass + "' WHERE USERNAME = '" + user + "'";
-                        st.executeUpdate(sql1);
-                        System.out.println("Password for " + user + " successfully changed.");
-                    } else {
-                        System.out.println("Passwords do not match...");
-                    }
-                } catch (SQLException ex) {
-                    System.out.println(ex);
-                    System.out.println("Username doesn't exist...");
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+        String user = Usernametxt.getText();
+        String curpass = Currentpasstxt.getText();
+        String newpass = Newpasstxt.getText();
+        String confirmpass = Confirmpasstxt.getText();
+        
+        r.okButtonClicked(user, curpass, newpass, confirmpass);
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
