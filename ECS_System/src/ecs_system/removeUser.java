@@ -152,7 +152,8 @@ public class removeUser extends javax.swing.JFrame {
         String username = usernameTextField.getText();
         String checkPass = checkPassword.getText();
         r.removeUser(password,username,checkPass);
-        
+        setVisible(false);
+        new guiLogin().setVisible(true);
     }//GEN-LAST:event_confirmActionPerformed
 
     /**

@@ -14,7 +14,7 @@ public class loginController {
     String uName = "henry";
     String uPass = "123";
     int wrongInput = 4;
-    
+
     public boolean loginEnter(String password, String username) {
         boolean status = false;
         try {
@@ -42,10 +42,9 @@ public class loginController {
                             tempuser = rs.getString("USERNAME");
                             temppass = rs.getString("PASSWORD");
                             System.out.println("Username correct.");
-                            status = true;
                             if (tempuser.equals(username)) {
                                 if (!temppass.equals(password)) {
-                                    wrongInput = wrongInput -1;
+                                    wrongInput = wrongInput - 1;
                                     JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
                                     System.out.println(wrongInput);
                                 }
@@ -110,6 +109,7 @@ public class loginController {
                             st.executeUpdate(sql);
                             JOptionPane.showMessageDialog(null, "New user has created");
                             status = false;
+
                             //create new instance of gui login (return back to homescreen)
                             new guiLogin().setVisible(true);
                         } catch (Exception ex) {
@@ -163,7 +163,9 @@ public class loginController {
                             if (dialogResult == JOptionPane.YES_OPTION) {
                                 String sql1 = "DELETE FROM LOGIN WHERE USERNAME = '" + tempUser + "'";
                                 st.executeUpdate(sql1);
-                                System.out.println("Operation complete");
+                                JOptionPane.showMessageDialog(null, "Username: " + username + " has been removed!");
+                                //new removeUser().setVisible(false);
+                                new guiLogin().setVisible(true);
                             }
 
                         }
@@ -183,16 +185,16 @@ public class loginController {
         }
     }
 
-    public void okButtonClicked(String username, String currentpass, String newpass, String confirmpass) {
+    public boolean okButtonClicked(String username, String currentpass, String newpass, String confirmpass) {
+        boolean status = false;
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             String tempuser = "";
             String tempcurpass = "";
-
             if (username.equals("") || currentpass.equals("") || newpass.equals("") || confirmpass.equals("")) {
                 System.out.println("All the textfields require input...");
             } else if (!newpass.equals(confirmpass)) {
-                System.out.println("Passwords do not match...");
+                JOptionPane.showMessageDialog(null, "Passwords do not match...");
             } else {
                 try {
                     String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
@@ -205,17 +207,19 @@ public class loginController {
                     if (tempcurpass.equals(currentpass)) {
                         String sql1 = "UPDATE LOGIN SET PASSWORD = '" + newpass + "' WHERE USERNAME = '" + username + "'";
                         st.executeUpdate(sql1);
-                        System.out.println("Password for " + username + " successfully changed.");
+                        JOptionPane.showMessageDialog(null, "Password for " + username + " successfully changed.");
+                        status = true;
                     } else {
-                        System.out.println("Passwords do not match...");
+                        JOptionPane.showMessageDialog(null, "Passwords do not match...");
                     }
                 } catch (SQLException ex) {
                     System.out.println(ex);
-                    System.out.println("Username doesn't exist...");
+                    JOptionPane.showMessageDialog(null, "Username doesn't exist...");
                 }
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        return status;
     }
 }

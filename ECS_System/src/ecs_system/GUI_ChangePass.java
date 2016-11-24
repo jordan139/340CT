@@ -3,7 +3,7 @@ package ecs_system;
 public class GUI_ChangePass extends javax.swing.JFrame {
 
     loginController r = new loginController();
-    
+
     public GUI_ChangePass() {
         initComponents();
 
@@ -111,8 +111,11 @@ public class GUI_ChangePass extends javax.swing.JFrame {
         String curpass = Currentpasstxt.getText();
         String newpass = Newpasstxt.getText();
         String confirmpass = Confirmpasstxt.getText();
-        
-        r.okButtonClicked(user, curpass, newpass, confirmpass);
+
+        if (r.okButtonClicked(user, curpass, newpass, confirmpass)) {
+            setVisible(false);
+            new guiLogin().setVisible(true);
+        };
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
