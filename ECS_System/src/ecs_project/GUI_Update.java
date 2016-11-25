@@ -2,6 +2,7 @@ package ecs_project;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 
 public class GUI_Update extends javax.swing.JFrame {
 
@@ -222,24 +223,28 @@ public class GUI_Update extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
-        modulecode = Integer.parseInt(Modulecodetxt.getText());
-        moduletitle = Moduletitletxt.getText();
-        moduletutor = Moduletutortxt.getText();
-        coursenumber = Integer.parseInt(Coursenumbertxt.getText());
-        coursetitle = Coursetitletxt.getText();
-        courseissue = Courseissuetxt.getText();
-        coursedue = Courseduetxt.getText();
-        coursetype = TypeCombo.getSelectedItem().toString();
-        coursemark = Double.parseDouble(Courseduetxt1.getText());
-        if (coursetype.equals("Individual")) {
-            r.updateIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
-        } else {
-            r.updateGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
-        }
-        emptyTextfields();
-        TextArea.setText("");
-        for (int i = 0; i < r.getAll().size(); i++) {
-            TextArea.append(r.getAll().get(i).toString());
+        try {
+            modulecode = Integer.parseInt(Modulecodetxt.getText());
+            moduletitle = Moduletitletxt.getText();
+            moduletutor = Moduletutortxt.getText();
+            coursenumber = Integer.parseInt(Coursenumbertxt.getText());
+            coursetitle = Coursetitletxt.getText();
+            courseissue = Courseissuetxt.getText();
+            coursedue = Courseduetxt.getText();
+            coursetype = TypeCombo.getSelectedItem().toString();
+            coursemark = Double.parseDouble(Courseduetxt1.getText());
+            if (coursetype.equals("Individual")) {
+                r.updateIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+            } else {
+                r.updateGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+            }
+            emptyTextfields();
+            TextArea.setText("");
+            for (int i = 0; i < r.getAll().size(); i++) {
+                TextArea.append(r.getAll().get(i).toString());
+            }
+        } catch (NumberFormatException ex) {
+             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_UpdateBtnActionPerformed
 
