@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import Utilities.FileUtils;
+import java.io.File;
+import javax.swing.JFileChooser;
 
 public class CourseworkController {
 
@@ -148,5 +151,11 @@ public class CourseworkController {
             System.out.println(ex);
         }
         return coursetitles;
+    }
+
+    public void downloadCoversheet(String TextArea) {
+        ArrayList<String> res = new ArrayList();
+        res.add(TextArea);
+        FileUtils.writeListToFile(res, "coversheet.csv");
     }
 }

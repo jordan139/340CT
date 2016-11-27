@@ -1,5 +1,7 @@
 package ecs_project;
 
+import javax.swing.JOptionPane;
+
 public class GUI_Generate extends javax.swing.JFrame {
 
     CourseworkController r = new CourseworkController();
@@ -17,10 +19,11 @@ public class GUI_Generate extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        courseCombo = new javax.swing.JComboBox<>();
+        courseCombo = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
         returnBtn = new javax.swing.JButton();
+        downloadBtn = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -46,6 +49,14 @@ public class GUI_Generate extends javax.swing.JFrame {
             }
         });
 
+        downloadBtn.setBackground(new java.awt.Color(102, 102, 255));
+        downloadBtn.setText("Download");
+        downloadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downloadBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -53,7 +64,10 @@ public class GUI_Generate extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(returnBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(downloadBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(returnBtn))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -67,7 +81,9 @@ public class GUI_Generate extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(returnBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(returnBtn)
+                    .addComponent(downloadBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -85,6 +101,11 @@ public class GUI_Generate extends javax.swing.JFrame {
         TextArea.setText("");
         TextArea.append(r.generateCoursework(coursetitle));
     }//GEN-LAST:event_courseComboActionPerformed
+
+    private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
+        r.downloadCoversheet(TextArea.getText());
+        JOptionPane.showMessageDialog(null, "Download Successful.", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_downloadBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,6 +145,7 @@ public class GUI_Generate extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea TextArea;
     private javax.swing.JComboBox<String> courseCombo;
+    private javax.swing.JButton downloadBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnBtn;
