@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Utilities.FileUtils;
-import java.io.File;
-import javax.swing.JFileChooser;
 
 public class CourseworkController {
 
