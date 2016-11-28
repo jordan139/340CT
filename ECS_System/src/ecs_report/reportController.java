@@ -1,5 +1,6 @@
 package ecs_report;
 
+import Utilities.FileUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class reportController {
 
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db1";
+    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
     String uName = "henry";
     String uPass = "123";
 
@@ -71,17 +72,17 @@ public class reportController {
                 String sql = "SELECT * FROM SUBMISSION WHERE STUDENT_ID = " + ID;
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    report = "Student ID: " + rs.getInt("STUDENT_ID") + "\n" + "First name: " + rs.getString("FIRST_NAME") + "\n"
-                            + "Last name: " + rs.getString("LAST_NAME") + "\n" + "Course detail: " + rs.getString("COVERSHEET") + "\n";
+                    report += "Student ID: " + rs.getInt("STUDENT_ID") + "\n" + "First name: " + rs.getString("FIRST_NAME") + "\n"
+                            + "Last name: " + rs.getString("LAST_NAME") + "\n" + "Coversheet:\n" + rs.getString("COVERSHEET") + "\n";
                 }
 
-                String sql1 = "SELECT * FROM COURSEWORK WHERE COURSE_TITLE = " + title;
+                sql = "SELECT * FROM COURSEWORK WHERE COURSE_TITLE = '" + title + "'";
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    report += "Module code: " + rs.getInt("MODULE_CODE") + "\t" + "Module title: " + rs.getString("MODULE_TITLE") + "\t"
-                            + "Module tutor: " + rs.getString("MODULE_TUTOR") + "\t" + "Course number: " + rs.getString("COURSE_NO") + "\t"
-                            + "Course title: " + rs.getString("COURSE_TITLE") + "\t" + "Course issue: " + rs.getDate("COURSE_ISSUE") + "\t"
-                            + "Course due: " + rs.getDate("COURSE_DUE") + "\t" + "Course type: " + rs.getString("COURSE_TYPE") + "\t"
+                    report += "Module code: " + rs.getInt("MODULE_CODE") + "\n" + "Module title: " + rs.getString("MODULE_TITLE") + "\n"
+                            + "Module tutor: " + rs.getString("MODULE_TUTOR") + "\n" + "Course number: " + rs.getString("COURSE_NO") + "\n"
+                            + "Course title: " + rs.getString("COURSE_TITLE") + "\n" + "Course issue: " + rs.getDate("COURSE_ISSUE") + "\n"
+                            + "Course due: " + rs.getDate("COURSE_DUE") + "\n" + "Course type: " + rs.getString("COURSE_TYPE") + "\n"
                             + "Course mark: " + rs.getDouble("COURSE_MARK") + "\n";
                 }
             }
@@ -89,5 +90,11 @@ public class reportController {
             System.out.println(ex);
         }
         return report;
+    }
+
+    public void downloadReport(String TextArea) {
+        ArrayList<String> res = new ArrayList();
+        res.add(TextArea);
+        FileUtils.writeListToFile(res, "report.csv");
     }
 }

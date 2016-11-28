@@ -1,5 +1,7 @@
 package ecs_report;
 
+import javax.swing.JOptionPane;
+
 public class GUI_Report extends javax.swing.JFrame {
 
     reportController r = new reportController();
@@ -13,6 +15,7 @@ public class GUI_Report extends javax.swing.JFrame {
         for (int i = 0; i < r.getCourseTitles().size(); i++) {
             comboTitles.addItem(r.getCourseTitles().get(i).toString());
         }
+        TextArea.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +29,7 @@ public class GUI_Report extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         comboIDs = new javax.swing.JComboBox();
         comboTitles = new javax.swing.JComboBox();
+        downloadBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +52,13 @@ public class GUI_Report extends javax.swing.JFrame {
 
         comboTitles.setBorder(null);
 
+        downloadBtn.setText("Download Report");
+        downloadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downloadBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,6 +69,8 @@ public class GUI_Report extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(downloadBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(generateBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -82,7 +95,9 @@ public class GUI_Report extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(generateBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(generateBtn)
+                    .addComponent(downloadBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -94,6 +109,11 @@ public class GUI_Report extends javax.swing.JFrame {
         String title = comboTitles.getSelectedItem().toString();
         TextArea.append(r.generateReport(ID, title));
     }//GEN-LAST:event_generateBtnActionPerformed
+
+    private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
+        r.downloadReport(TextArea.getText());
+        JOptionPane.showMessageDialog(null, "Download Successful.", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_downloadBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -132,8 +152,7 @@ public class GUI_Report extends javax.swing.JFrame {
     private javax.swing.JTextArea TextArea;
     private javax.swing.JComboBox comboIDs;
     private javax.swing.JComboBox comboTitles;
-    private javax.swing.JComboBox<String> courseCombo;
-    private javax.swing.JComboBox<String> courseCombo1;
+    private javax.swing.JButton downloadBtn;
     private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -2,6 +2,7 @@ package ecs_project;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 
 public class GUI_Remove extends javax.swing.JFrame {
 
@@ -98,12 +99,16 @@ public class GUI_Remove extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
-        modulecode = Integer.parseInt(Modulecodetxt.getText());
-        r.removeCoursework(modulecode);
-        emptyTextfields();
-        TextArea.setText("");
-        for (int i = 0; i < r.getAll().size(); i++) {
-            TextArea.append(r.getAll().get(i).toString());
+        try {
+            modulecode = Integer.parseInt(Modulecodetxt.getText());
+            r.removeCoursework(modulecode);
+            emptyTextfields();
+            TextArea.setText("");
+            for (int i = 0; i < r.getAll().size(); i++) {
+                TextArea.append(r.getAll().get(i).toString());
+            }
+        } catch (NumberFormatException ex) {
+             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_RemoveBtnActionPerformed
 

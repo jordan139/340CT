@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 public class GUI_Add extends javax.swing.JFrame {
 
@@ -225,33 +226,37 @@ public class GUI_Add extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
-        Group g;
-        Individual i;
-        modulecode = Integer.parseInt(Modulecodetxt.getText());
-        moduletitle = Moduletitletxt.getText();
-        moduletutor = Moduletutortxt.getText();
-        coursenumber = Integer.parseInt(Coursenumbertxt.getText());
-        coursetitle = Coursetitletxt.getText();
-        courseissue = Courseissuetxt.getText();
-        coursedue = Courseduetxt.getText();
-        coursetype = TypeCombo.getSelectedItem().toString();
-        coursemark = Double.parseDouble(Courseduetxt1.getText());
-        LocalDateTime now = LocalDateTime.now();
-        String[] temp;
-        submitinfo = dtf.format(now);
-        //temp = dtf.format(now).split(" ");
-        //submitinfo = temp[0];
+        try {
+            Group g;
+            Individual i;
+            modulecode = Integer.parseInt(Modulecodetxt.getText());
+            moduletitle = Moduletitletxt.getText();
+            moduletutor = Moduletutortxt.getText();
+            coursenumber = Integer.parseInt(Coursenumbertxt.getText());
+            coursetitle = Coursetitletxt.getText();
+            courseissue = Courseissuetxt.getText();
+            coursedue = Courseduetxt.getText();
+            coursetype = TypeCombo.getSelectedItem().toString();
+            coursemark = Double.parseDouble(Courseduetxt1.getText());
+            LocalDateTime now = LocalDateTime.now();
+            String[] temp;
+            submitinfo = dtf.format(now);
+            //temp = dtf.format(now).split(" ");
+            //submitinfo = temp[0];
 
-        System.out.println(submitinfo);
-        if (coursetype.equals("Individual")) {
-            r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
-        } else {
-            r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
-        }
-        emptyTextfields();
-        TextArea.setText("");
-        for (int a = 0; a < r.getAll().size(); a++) {
-            TextArea.append(r.getAll().get(a).toString());
+            System.out.println(submitinfo);
+            if (coursetype.equals("Individual")) {
+                r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+            } else {
+                r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+            }
+            emptyTextfields();
+            TextArea.setText("");
+            for (int a = 0; a < r.getAll().size(); a++) {
+                TextArea.append(r.getAll().get(a).toString());
+            }
+        } catch (NumberFormatException ex) {
+             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AddBtnActionPerformed
 

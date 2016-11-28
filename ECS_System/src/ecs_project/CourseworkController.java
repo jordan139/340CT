@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import Utilities.FileUtils;
 
 public class CourseworkController {
 
@@ -28,10 +29,10 @@ public class CourseworkController {
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
                     temp = rs.getInt("MODULE_CODE") + "\t" + rs.getString("MODULE_TITLE") + "\t"
-                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t" 
-                            + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t" 
-                            + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t" 
-                            + rs.getDouble("COURSE_MARK") +  "\t" + rs.getString("COURSE_CREATION") + "\n";
+                            + rs.getString("MODULE_TUTOR") + "\t" + rs.getString("COURSE_NO") + "\t"
+                            + rs.getString("COURSE_TITLE") + "\t" + rs.getDate("COURSE_ISSUE") + "\t"
+                            + rs.getDate("COURSE_DUE") + "\t" + rs.getString("COURSE_TYPE") + "\t"
+                            + rs.getDouble("COURSE_MARK") + "\t" + rs.getString("COURSE_CREATION") + "\n";
                     courseworks.add(temp);
                 }
             }
@@ -45,14 +46,11 @@ public class CourseworkController {
     public void addGroupCoursework(Group g) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                String sql = "INSERT INTO COURSEWORK VALUES (" + g.modulecode + ", '" + g.moduletitle + "', '" + g.moduletutor + "', " + g.coursenumber + ", '" + g.coursetitle + "', '" + g.courseissue + "', '" + g.courseissue + "', '" + g.coursetype + "', " + g.coursemark + ", '" + g.createinfo + "')";
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty fields.");
-            }
+            String sql = "INSERT INTO COURSEWORK VALUES (" + g.modulecode + ", '" + g.moduletitle + "', '" + g.moduletutor + "', " + g.coursenumber + ", '" + g.coursetitle + "', '" + g.courseissue + "', '" + g.courseissue + "', '" + g.coursetype + "', " + g.coursemark + ", '" + g.createinfo + "')";
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            st.executeUpdate(sql);
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -62,14 +60,10 @@ public class CourseworkController {
     public void addIndividualCoursework(Individual i) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                String sql = "INSERT INTO COURSEWORK VALUES (" + i.modulecode + ", '" + i.moduletitle + "', '" + i.moduletutor + "', " + i.coursenumber + ", '" + i.coursetitle + "', '" + i.courseissue + "', '" + i.courseissue + "', '" + i.coursetype + "', " + i.coursemark + ", '" + i.createinfo + "')";
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty fields.");
-            }
+            String sql = "INSERT INTO COURSEWORK VALUES (" + i.modulecode + ", '" + i.moduletitle + "', '" + i.moduletutor + "', " + i.coursenumber + ", '" + i.coursetitle + "', '" + i.courseissue + "', '" + i.courseissue + "', '" + i.coursetype + "', " + i.coursemark + ", '" + i.createinfo + "')";
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            st.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -78,14 +72,10 @@ public class CourseworkController {
     public void updateIndividualCoursework(Individual i) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_ISSUE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty fields.");
-            }
+            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_ISSUE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            st.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -94,14 +84,10 @@ public class CourseworkController {
     public void updateGroupCoursework(Group g) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_ISSUE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty fields.");
-            }
+            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_ISSUE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            st.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -110,14 +96,10 @@ public class CourseworkController {
     public void removeCoursework(int modulecode) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            try {
-                String sql = "DELETE FROM COURSEWORK WHERE MODULE_CODE = " + modulecode;
-                Statement st = conn.createStatement();
-                ResultSet rs = null;
-                st.executeUpdate(sql);
-            } catch (NumberFormatException | IndexOutOfBoundsException exception) {
-                System.out.println("Error! Check format type or empty field of Module Code.");
-            }
+            String sql = "DELETE FROM COURSEWORK WHERE MODULE_CODE = " + modulecode;
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            st.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -144,8 +126,8 @@ public class CourseworkController {
         }
         return coversheet;
     }
-    
-    public ArrayList getCourseworkTitles () {
+
+    public ArrayList getCourseworkTitles() {
         ArrayList<String> coursetitles = new ArrayList<>();
         String temp;
         //ConnectionURL, username and password should be specified in getConnection()       
@@ -167,5 +149,11 @@ public class CourseworkController {
             System.out.println(ex);
         }
         return coursetitles;
+    }
+
+    public void downloadCoversheet(String TextArea) {
+        ArrayList<String> res = new ArrayList();
+        res.add(TextArea);
+        FileUtils.writeListToFile(res, "coversheet.csv");
     }
 }
