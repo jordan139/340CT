@@ -13,12 +13,12 @@ import java.util.*;
  *
  * @author baheeraj
  */
-public class Window1 extends javax.swing.JFrame {
+public class SubmitLink1 extends javax.swing.JFrame {
 
     /**
      * Creates new form Window1
      */
-    public Window1() {
+    public SubmitLink1() {
         initComponents();
     }
 
@@ -104,8 +104,8 @@ public class Window1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JFrame Window3 = new Window21();
-    Window3.setVisible(true);
+        JFrame Window2 = new AddSubmission2();
+    Window2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -125,20 +125,23 @@ public class Window1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Window1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubmitLink1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Window1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubmitLink1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Window1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubmitLink1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Window1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubmitLink1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Window1().setVisible(true);
+                new SubmitLink1().setVisible(true);
             }
         });
     }

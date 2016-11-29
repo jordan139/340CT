@@ -9,6 +9,6 @@ package ecs_submit;
  *
  * @author baheeraj
  */
-public class SubmitController {
+public class StudentController {
     
 }

@@ -175,9 +175,9 @@
                   <Component id="duedate4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="duedate5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="duedate5" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="33" max="-2" attributes="0"/>
