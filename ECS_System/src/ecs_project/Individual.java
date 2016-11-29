@@ -1,7 +1,5 @@
 package ecs_project;
 
-import java.time.LocalDateTime;
-
 public class Individual extends Coursework {
 
     int coursenumber = 0;
@@ -52,12 +50,12 @@ public class Individual extends Coursework {
     }
 
     @Override
-    public String getCoursetitle() {
+    public String getCourseTitle() {
         return coursetitle;
     }
 
     @Override
-    public void setCoursetitle(String coursetitle) {
+    public void setCourseTitle(String coursetitle) {
         this.coursetitle = coursetitle;
     }
 

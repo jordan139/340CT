@@ -1,7 +1,5 @@
 package ecs_project;
 
-import java.time.LocalDateTime;
-
 public abstract class Coursework {
 
     String moduletitle;
@@ -75,11 +73,11 @@ public abstract class Coursework {
     public void setCourseNumber(int coursenumber) {
     }
 
-    public String getCoursetitle() {
+    public String getCourseTitle() {
         return null;
     }
 
-    public void setCoursetitle(String coursetitle) {
+    public void setCourseTitle(String coursetitle) {
     }
 
     public String getModuleTutor() {

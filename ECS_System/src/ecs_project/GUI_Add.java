@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class GUI_Add extends javax.swing.JFrame {
 
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
-    CourseworkController r = new CourseworkController();
+    CourseworkController control = new CourseworkController();
     int modulecode;
     double coursemark;
     int coursenumber;
@@ -25,8 +25,8 @@ public class GUI_Add extends javax.swing.JFrame {
     public GUI_Add() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < r.getAll().size(); i++) {
-            TextArea.append(r.getAll().get(i).toString());
+        for (int i = 0; i < control.getAll().size(); i++) {
+            TextArea.append(control.getAll().get(i).toString());
         }
     }
 
@@ -241,19 +241,17 @@ public class GUI_Add extends javax.swing.JFrame {
             LocalDateTime now = LocalDateTime.now();
             String[] temp;
             submitinfo = dtf.format(now);
-            //temp = dtf.format(now).split(" ");
-            //submitinfo = temp[0];
 
             System.out.println(submitinfo);
             if (coursetype.equals("Individual")) {
-                r.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+                control.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             } else {
-                r.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+                control.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             }
             emptyTextfields();
             TextArea.setText("");
-            for (int a = 0; a < r.getAll().size(); a++) {
-                TextArea.append(r.getAll().get(a).toString());
+            for (int a = 0; a < control.getAll().size(); a++) {
+                TextArea.append(control.getAll().get(a).toString());
             }
         } catch (NumberFormatException ex) {
              JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);

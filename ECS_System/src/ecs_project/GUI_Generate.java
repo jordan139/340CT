@@ -4,13 +4,13 @@ import javax.swing.JOptionPane;
 
 public class GUI_Generate extends javax.swing.JFrame {
 
-    CourseworkController r = new CourseworkController();
+    CourseworkController control = new CourseworkController();
 
     public GUI_Generate() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < r.getCourseworkTitles().size(); i++) {
-            courseCombo.addItem(r.getCourseworkTitles().get(i).toString());
+        for (int i = 0; i < control.getCourseworkTitles().size(); i++) {
+            courseCombo.addItem(control.getCourseworkTitles().get(i).toString());
         }
     }
 
@@ -99,11 +99,11 @@ public class GUI_Generate extends javax.swing.JFrame {
     private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
         String coursetitle = courseCombo.getSelectedItem().toString();
         TextArea.setText("");
-        TextArea.append(r.generateCoursework(coursetitle));
+        TextArea.append(control.generateCoursework(coursetitle));
     }//GEN-LAST:event_courseComboActionPerformed
 
     private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
-        r.downloadCoversheet(TextArea.getText());
+        control.downloadCoversheet(TextArea.getText());
         JOptionPane.showMessageDialog(null, "Download Successful.", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_downloadBtnActionPerformed
 

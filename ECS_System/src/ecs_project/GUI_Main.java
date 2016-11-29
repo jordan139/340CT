@@ -5,13 +5,17 @@ import java.awt.event.WindowEvent;
 
 public class GUI_Main extends javax.swing.JFrame {
 
-    CourseworkController r = new CourseworkController();
+    CourseworkController control = new CourseworkController();
+    GUI_Update u = new GUI_Update();
+    GUI_Remove r = new GUI_Remove();
+    GUI_Add a = new GUI_Add();
+    GUI_Generate g = new GUI_Generate();
 
     public GUI_Main() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < r.getAll().size(); i++) {
-            TextArea.append(r.getAll().get(i).toString());
+        for (int i = 0; i < control.getAll().size(); i++) {
+            TextArea.append(control.getAll().get(i).toString());
         }
     }
 
@@ -110,26 +114,22 @@ public class GUI_Main extends javax.swing.JFrame {
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         setVisible(false);
-        GUI_Update r = new GUI_Update();
-        r.setVisible(true);
+        u.setVisible(true);
     }//GEN-LAST:event_UpdateBtnActionPerformed
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
         setVisible(false);
-        GUI_Remove r = new GUI_Remove();
         r.setVisible(true);
     }//GEN-LAST:event_RemoveBtnActionPerformed
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
         setVisible(false);
-        GUI_Add r = new GUI_Add();
-        r.setVisible(true);
+        a.setVisible(true);
     }//GEN-LAST:event_AddBtnActionPerformed
 
     private void GenerateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateBtnActionPerformed
         setVisible(false);
-        GUI_Generate r = new GUI_Generate();
-        r.setVisible(true);
+        g.setVisible(true);
     }//GEN-LAST:event_GenerateBtnActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

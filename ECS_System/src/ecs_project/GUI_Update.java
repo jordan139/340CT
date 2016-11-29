@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class GUI_Update extends javax.swing.JFrame {
 
-    CourseworkController r = new CourseworkController();
+    CourseworkController control = new CourseworkController();
     int modulecode;
     double coursemark;
     int coursenumber;
@@ -21,8 +21,8 @@ public class GUI_Update extends javax.swing.JFrame {
     public GUI_Update() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < r.getAll().size(); i++) {
-            TextArea.append(r.getAll().get(i).toString());
+        for (int i = 0; i < control.getAll().size(); i++) {
+            TextArea.append(control.getAll().get(i).toString());
         }
     }
 
@@ -234,14 +234,14 @@ public class GUI_Update extends javax.swing.JFrame {
             coursetype = TypeCombo.getSelectedItem().toString();
             coursemark = Double.parseDouble(Courseduetxt1.getText());
             if (coursetype.equals("Individual")) {
-                r.updateIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+                control.updateIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
             } else {
-                r.updateGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
+                control.updateGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
             }
             emptyTextfields();
             TextArea.setText("");
-            for (int i = 0; i < r.getAll().size(); i++) {
-                TextArea.append(r.getAll().get(i).toString());
+            for (int i = 0; i < control.getAll().size(); i++) {
+                TextArea.append(control.getAll().get(i).toString());
             }
         } catch (NumberFormatException ex) {
              JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
