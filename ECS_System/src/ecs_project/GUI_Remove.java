@@ -12,8 +12,8 @@ public class GUI_Remove extends javax.swing.JFrame {
     public GUI_Remove() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < control.getAll().size(); i++) {
-            TextArea.append(control.getAll().get(i).toString());
+        for (int i = 0; i < control.getCourseworkList().size(); i++) {
+            TextArea.append(control.getCourseworkList().get(i).toString());
         }
     }
 
@@ -101,11 +101,11 @@ public class GUI_Remove extends javax.swing.JFrame {
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
         try {
             modulecode = Integer.parseInt(Modulecodetxt.getText());
-            control.removeCoursework(modulecode);
+            control.deleteCoursework(modulecode);
             emptyTextfields();
             TextArea.setText("");
-            for (int i = 0; i < control.getAll().size(); i++) {
-                TextArea.append(control.getAll().get(i).toString());
+            for (int i = 0; i < control.getCourseworkList().size(); i++) {
+                TextArea.append(control.getCourseworkList().get(i).toString());
             }
         } catch (NumberFormatException ex) {
              JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);

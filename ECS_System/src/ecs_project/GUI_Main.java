@@ -14,8 +14,8 @@ public class GUI_Main extends javax.swing.JFrame {
     public GUI_Main() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < control.getAll().size(); i++) {
-            TextArea.append(control.getAll().get(i).toString());
+        for (int i = 0; i < control.getCourseworkList().size(); i++) {
+            TextArea.append(control.getCourseworkList().get(i).toString());
         }
     }
 

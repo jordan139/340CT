@@ -99,7 +99,7 @@ public class GUI_Generate extends javax.swing.JFrame {
     private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
         String coursetitle = courseCombo.getSelectedItem().toString();
         TextArea.setText("");
-        TextArea.append(control.generateCoursework(coursetitle));
+        TextArea.append(control.generateCourseworkDetails(coursetitle));
     }//GEN-LAST:event_courseComboActionPerformed
 
     private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed

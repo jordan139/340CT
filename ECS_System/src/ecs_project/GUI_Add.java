@@ -25,8 +25,8 @@ public class GUI_Add extends javax.swing.JFrame {
     public GUI_Add() {
         initComponents();
         TextArea.setEnabled(false);
-        for (int i = 0; i < control.getAll().size(); i++) {
-            TextArea.append(control.getAll().get(i).toString());
+        for (int i = 0; i < control.getCourseworkList().size(); i++) {
+            TextArea.append(control.getCourseworkList().get(i).toString());
         }
     }
 
@@ -244,14 +244,14 @@ public class GUI_Add extends javax.swing.JFrame {
 
             System.out.println(submitinfo);
             if (coursetype.equals("Individual")) {
-                control.addIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+                control.submitIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             } else {
-                control.addGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
+                control.submitGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             }
             emptyTextfields();
             TextArea.setText("");
-            for (int a = 0; a < control.getAll().size(); a++) {
-                TextArea.append(control.getAll().get(a).toString());
+            for (int a = 0; a < control.getCourseworkList().size(); a++) {
+                TextArea.append(control.getCourseworkList().get(a).toString());
             }
         } catch (NumberFormatException ex) {
              JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
