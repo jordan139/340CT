@@ -66,10 +66,10 @@ public class CourseworkRepoImpl {
         }
     }
 
-    public void updateIndividualCoursework(Individual i) {
+    public void updateGroupCoursework(Group g) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_ISSUE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
+            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_ISSUE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
             Statement st = conn.createStatement();
             ResultSet rs = null;
             st.executeUpdate(sql);
@@ -78,10 +78,10 @@ public class CourseworkRepoImpl {
         }
     }
 
-    public void updateGroupCoursework(Group g) {
+    public void updateIndividualCoursework(Individual i) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + g.moduletitle + "', MODULE_TUTOR = '" + g.moduletutor + "', COURSE_NO = " + g.coursenumber + ", COURSE_TITLE = '" + g.coursetitle + "', COURSE_ISSUE = '" + g.courseissue + "', COURSE_DUE = '" + g.coursedue + "', COURSE_TYPE = '" + g.coursetype + "', COURSE_MARK = " + g.coursemark + " WHERE MODULE_CODE = " + g.modulecode;
+            String sql = "UPDATE COURSEWORK SET MODULE_TITLE = '" + i.moduletitle + "', MODULE_TUTOR = '" + i.moduletutor + "', COURSE_NO = " + i.coursenumber + ", COURSE_TITLE = '" + i.coursetitle + "', COURSE_ISSUE = '" + i.courseissue + "', COURSE_DUE = '" + i.coursedue + "', COURSE_TYPE = '" + i.coursetype + "', COURSE_MARK = " + i.coursemark + " WHERE MODULE_CODE = " + i.modulecode;
             Statement st = conn.createStatement();
             ResultSet rs = null;
             st.executeUpdate(sql);
