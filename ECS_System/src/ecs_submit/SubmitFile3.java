@@ -5,7 +5,9 @@
  */
 package ecs_submit;
 
-import javax.swing.JFrame;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -13,11 +15,20 @@ import javax.swing.JFrame;
  */
 public class SubmitFile3 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Window22
-     */
+    SubmitRepoImpl s = new SubmitRepoImpl();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
+    StudentController control = new StudentController();
+    String SubmissionType;
+    String SubmissionTitle;
+    String SubmissionFile;
+    String SubmissionText;
+    int ReferenceNumber;
+    int counter;
+    String submitinfo;
+
     public SubmitFile3() {
         initComponents();
+
     }
 
     /**
@@ -30,29 +41,30 @@ public class SubmitFile3 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        submissiontype = new javax.swing.JLabel();
+        submissiontitle = new javax.swing.JLabel();
+        filettosubmit = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        filetype = new javax.swing.JComboBox<>();
+        Subtitle = new javax.swing.JTextField();
+        filechoose = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
+        tickbox = new javax.swing.JCheckBox();
+        AddSubmission = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textfile = new javax.swing.JTextArea();
+        texttosubmit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Sumit Paper");
 
-        jLabel1.setText("Submission Type:");
+        submissiontype.setText("Submission Type:");
 
-        jLabel2.setText("Submission Title*:");
+        submissiontitle.setText("Submission Title*:");
 
-        jLabel3.setText("File to Submit:");
+        filettosubmit.setText("File to Submit:");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -60,36 +72,44 @@ public class SubmitFile3 extends javax.swing.JFrame {
         jLabel7.setText("   Refer to assignment brief for detailed requiements ");
         jLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "File Upload", "Text Upload" }));
-
-        jTextField1.setText("Submission Title");
-
-        jButton1.setText("Choose the file");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        filetype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "File Upload", "Text Upload" }));
+        filetype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                filetypeActionPerformed(evt);
+            }
+        });
+
+        Subtitle.setText("Submission Title");
+
+        filechoose.setText("Choose the file");
+        filechoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filechooseActionPerformed(evt);
             }
         });
 
         jLabel4.setText("This assignment is my own work, except where I have acknowledged the use of the works of others or I am making a group submission.");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        tickbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                tickboxActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Add Submission");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AddSubmission.setText("Add Submission");
+        AddSubmission.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AddSubmissionActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textfile.setColumns(20);
+        textfile.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        textfile.setRows(5);
+        textfile.setText("tEXT TSLTJSALASEFAJS;FLISJA;FLJSAIL;FJAS;LIFJA;ILSFJA;SLJFIALS;JFLASIFHSFHSAK");
+        jScrollPane1.setViewportView(textfile);
+
+        texttosubmit.setText("Text to Submit:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,17 +124,18 @@ public class SubmitFile3 extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(submissiontype)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(filetype, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                    .addComponent(submissiontitle)
+                                    .addComponent(filettosubmit)
+                                    .addComponent(texttosubmit))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Subtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(filechoose, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
@@ -124,10 +145,10 @@ public class SubmitFile3 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(246, 246, 246)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AddSubmission, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
+                                .addComponent(tickbox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -136,51 +157,60 @@ public class SubmitFile3 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(16, 16, 16)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(submissiontype)
+                    .addComponent(filetype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(submissiontitle)
+                    .addComponent(Subtitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(filettosubmit)
+                    .addComponent(filechoose))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(texttosubmit)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tickbox)
+                        .addGap(40, 40, 40))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AddSubmission, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void tickboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tickboxActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        JFrame Window3 = new Submited4();
-    Window3.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_tickboxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddSubmissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSubmissionActionPerformed
+        String filetyp = filetype.getSelectedItem().toString();
+        String subtitle = Subtitle.getText();
+        String content = textfile.getText();
+        boolean status = tickbox.isSelected();
+        s.submitCourseworkCoursework(filetyp,subtitle,content,status);
+    }//GEN-LAST:event_AddSubmissionActionPerformed
+
+    private void filechooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filechooseActionPerformed
+        textfile.append(s.ChooseFile());
+    }//GEN-LAST:event_filechooseActionPerformed
+
+    private void filetypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetypeActionPerformed
         // TODO add your handling code here:
-        JFrame Window8 = new FileOpener();
-    Window8.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_filetypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,18 +249,24 @@ public class SubmitFile3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton AddSubmission;
+    private javax.swing.JTextField Subtitle;
+    private javax.swing.JButton filechoose;
+    private javax.swing.JLabel filettosubmit;
+    private javax.swing.JComboBox<String> filetype;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel submissiontitle;
+    private javax.swing.JLabel submissiontype;
+    private javax.swing.JTextArea textfile;
+    private javax.swing.JLabel texttosubmit;
+    private javax.swing.JCheckBox tickbox;
     // End of variables declaration//GEN-END:variables
+private void close() {
+        WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosing);
+    }
+
 }

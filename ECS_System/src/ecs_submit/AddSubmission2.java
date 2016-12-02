@@ -1,42 +1,34 @@
 package ecs_submit;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
-
 public class AddSubmission2 extends javax.swing.JFrame {
-    
-    String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
-    String uName = "jey";
-    String uPass = "123";
+
+    SubmitRepoImpl s = new SubmitRepoImpl();
 
     /**
      * Creates new form Window1
      */
-
     public AddSubmission2() {
         initComponents();
-           
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        for (int i = 0; i < s.getCourseworkTitles().size(); i++) {
+            courseCombo.addItem(s.getCourseworkTitles().get(i).toString());
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         SIDnum = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,8 +49,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         duedate6 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        Ctitle = new javax.swing.JTextField();
-        SIDnum2 = new javax.swing.JTextField();
+        courseCombo = new javax.swing.JComboBox<>();
 
         SIDnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,15 +62,13 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
         jLabel1.setText("Course Title :");
 
-        jLabel2.setText("Module Title:");
-
         jLabel3.setText("Submission status:");
 
         jLabel4.setText("Grading status:");
 
         jLabel5.setText("Last modified");
 
-        jButton1.setText("Add submission");
+        jButton1.setText("Confirm and Proceed");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -105,7 +94,6 @@ public class AddSubmission2 extends javax.swing.JFrame {
         duedate.setText("Day, (dd, mm, yyyy), Time");
         duedate.setBorder(null);
         duedate.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate.setEnabled(false);
         duedate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duedateActionPerformed(evt);
@@ -122,7 +110,6 @@ public class AddSubmission2 extends javax.swing.JFrame {
         duedate1.setText("This is attempt 1.");
         duedate1.setBorder(null);
         duedate1.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate1.setEnabled(false);
         duedate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duedate1ActionPerformed(evt);
@@ -192,17 +179,9 @@ public class AddSubmission2 extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Submission status");
 
-        Ctitle.setEnabled(false);
-        Ctitle.addActionListener(new java.awt.event.ActionListener() {
+        courseCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CtitleActionPerformed(evt);
-            }
-        });
-
-        SIDnum2.setEnabled(false);
-        SIDnum2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SIDnum2ActionPerformed(evt);
+                courseComboActionPerformed(evt);
             }
         });
 
@@ -210,42 +189,6 @@ public class AddSubmission2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Ctitle)
-                            .addComponent(SIDnum2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(duedate6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(duedate2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(duedate3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(duedate4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 2, Short.MAX_VALUE)))
-                        .addGap(104, 104, 104))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(duedate5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -262,6 +205,32 @@ public class AddSubmission2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(duedate6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duedate2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duedate3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duedate4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duedate5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -271,7 +240,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)))
@@ -287,12 +256,8 @@ public class AddSubmission2 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Ctitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(SIDnum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,9 +300,8 @@ public class AddSubmission2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         JFrame Window3 = new SubmitFile3();
-    Window3.setVisible(true);
+        Window3.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void duedateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedateActionPerformed
@@ -372,13 +336,10 @@ public class AddSubmission2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SIDnumActionPerformed
 
-    private void CtitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CtitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CtitleActionPerformed
-
-    private void SIDnum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIDnum2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SIDnum2ActionPerformed
+    private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
+        String temp = s.updateDetails(courseCombo.getSelectedItem().toString());
+        duedate.setText(temp);
+    }//GEN-LAST:event_courseComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,9 +440,8 @@ public class AddSubmission2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Ctitle;
     private javax.swing.JTextField SIDnum;
-    private javax.swing.JTextField SIDnum2;
+    private javax.swing.JComboBox<String> courseCombo;
     private javax.swing.JTextField duedate;
     private javax.swing.JTextField duedate1;
     private javax.swing.JTextField duedate2;
@@ -496,7 +456,6 @@ public class AddSubmission2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

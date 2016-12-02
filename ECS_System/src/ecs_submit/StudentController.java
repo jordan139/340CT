@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     public void submitCoursework(Submit cw) {
-        c.submitCourseworkCoursework(cw);
+     //   c.submitCourseworkCoursework(cw);
     }
     
     public void digitalReceipt(Submit dr) {

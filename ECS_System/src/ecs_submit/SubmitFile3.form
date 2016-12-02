@@ -33,19 +33,20 @@
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="submissiontype" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" pref="141" max="-2" attributes="0"/>
+                              <Component id="filetype" min="-2" pref="141" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="submissiontitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="filettosubmit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="texttosubmit" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField1" min="-2" pref="315" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="Subtitle" min="-2" pref="315" max="-2" attributes="0"/>
+                                  <Component id="filechoose" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" alignment="0" min="-2" pref="474" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -60,11 +61,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="AddSubmission" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace pref="313" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="tickbox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -79,35 +80,43 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jLabel7" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="submissiontype" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="filetype" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="submissiontitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Subtitle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="filettosubmit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="filechoose" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="72" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel4" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="texttosubmit" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="tickbox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel4" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="AddSubmission" min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,17 +130,17 @@
         <Property name="text" type="java.lang.String" value="Sumit Paper"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="submissiontype">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submission Type:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="submissiontitle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submission Title*:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="filettosubmit">
       <Properties>
         <Property name="text" type="java.lang.String" value="File to Submit:"/>
       </Properties>
@@ -155,7 +164,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="filetype">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -164,21 +173,24 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filetypeActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="Subtitle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submission Title"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="filechoose">
       <Properties>
         <Property name="text" type="java.lang.String" value="Choose the file"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filechooseActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -186,17 +198,17 @@
         <Property name="text" type="java.lang.String" value="This assignment is my own work, except where I have acknowledged the use of the works of others or I am making a group submission."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="tickbox">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tickboxActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="AddSubmission">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Submission"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddSubmissionActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -206,16 +218,22 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="textfile">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="11" style="0"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="tEXT TSLTJSALASEFAJS;FLISJA;FLJSAIL;FJAS;LIFJA;ILSFJA;SLJFIALS;JFLASIFHSFHSAK"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="texttosubmit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Text to Submit:"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
