@@ -5,6 +5,7 @@ import java.awt.event.WindowEvent;
 
 public class GUI_Main extends javax.swing.JFrame {
 
+    //All the GUI panels are initialized to handle navigation of the user interfaces.
     CourseworkController control = new CourseworkController();
     GUI_Update u = new GUI_Update();
     GUI_Remove r = new GUI_Remove();
@@ -14,6 +15,7 @@ public class GUI_Main extends javax.swing.JFrame {
     public GUI_Main() {
         initComponents();
         TextArea.setEnabled(false);
+        //All the existing coursework objects are displayed on a text area for users to see.
         for (int i = 0; i < control.getCourseworkList().size(); i++) {
             TextArea.append(control.getCourseworkList().get(i).toString());
         }
@@ -113,21 +115,25 @@ public class GUI_Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
+        //if the update button is pressed, the current GUI_MAIN gets closed and opens the GUI_UPDATE.
         setVisible(false);
         u.setVisible(true);
     }//GEN-LAST:event_UpdateBtnActionPerformed
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
+        //if the remove button is pressed, the current GUI_MAIN gets closed and opens the GUI_REMOVE. 
         setVisible(false);
         r.setVisible(true);
     }//GEN-LAST:event_RemoveBtnActionPerformed
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
+        //if the add button is pressed, the current GUI_MAIN gets closed and opens the GUI_ADD.
         setVisible(false);
         a.setVisible(true);
     }//GEN-LAST:event_AddBtnActionPerformed
 
     private void GenerateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateBtnActionPerformed
+        //if the generate button is pressed, the current GUI_MAIN gets closed and opens the GUI_GENERATE.
         setVisible(false);
         g.setVisible(true);
     }//GEN-LAST:event_GenerateBtnActionPerformed

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 public class GUI_Add extends javax.swing.JFrame {
 
+    //all the variables needed to add a coursework object is initialized.
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
     CourseworkController control = new CourseworkController();
     int modulecode;
@@ -25,6 +26,7 @@ public class GUI_Add extends javax.swing.JFrame {
     public GUI_Add() {
         initComponents();
         TextArea.setEnabled(false);
+        //all the existing coursework objects are displayed on a text area for users to see.
         for (int i = 0; i < control.getCourseworkList().size(); i++) {
             TextArea.append(control.getCourseworkList().get(i).toString());
         }
@@ -227,6 +229,7 @@ public class GUI_Add extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
         try {
+            //gets all the input values from user and stores them into the previously initialized variables. 
             Group g;
             Individual i;
             modulecode = Integer.parseInt(Modulecodetxt.getText());
@@ -242,27 +245,34 @@ public class GUI_Add extends javax.swing.JFrame {
             String[] temp;
             submitinfo = dtf.format(now);
 
-            System.out.println(submitinfo);
+            //checks if a new coursework type is individual or group.
             if (coursetype.equals("Individual")) {
+                //function that submits a new individual coursework object is called. 
                 control.submitIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             } else {
+                //function that submits a new group coursework object is called.
                 control.submitGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark, submitinfo));
             }
             emptyTextfields();
             TextArea.setText("");
+
+            //the coursework object list is refreshed and displayed back to user.
             for (int a = 0; a < control.getCourseworkList().size(); a++) {
                 TextArea.append(control.getCourseworkList().get(a).toString());
             }
+            //checks if the user inputs are all in a correct format or if there is an empty field. 
         } catch (NumberFormatException ex) {
-             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AddBtnActionPerformed
 
     private void ReturnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBtnActionPerformed
+        //if the return button is pressed, the current GUI_Add panel gets closed and opens the GUI_Main.
         setVisible(false);
         GUI_Main r = new GUI_Main();
         r.setVisible(true);
     }//GEN-LAST:event_ReturnBtnActionPerformed
+    //clears all the texts from the textfields.
     private void emptyTextfields() {
         Courseduetxt1.setText("");
         Coursenumbertxt.setText("");
