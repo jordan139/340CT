@@ -11,13 +11,18 @@ package ecs_submit;
  */
 public class DigitalReceipt extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Window24
-     */
+    int ref = 0;
+    
     public DigitalReceipt() {
         initComponents();
         TextArea.setEnabled(false);
         TextArea.setEditable(false);
+    }
+
+    public DigitalReceipt(int ref) {
+        initComponents();
+        duedate2.setEnabled(true);
+        duedate2.setText(String.valueOf(ref));
     }
 
     /**

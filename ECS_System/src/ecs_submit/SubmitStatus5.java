@@ -1,35 +1,25 @@
 package ecs_submit;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JFrame;
 
-
 public class SubmitStatus5 extends javax.swing.JFrame {
-    
+
     String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
     String uName = "jey";
     String uPass = "123";
-
-    /**
-     * Creates new form Window1
-     */
+    String content1 = "";
+    int ref = 0;
 
     public SubmitStatus5() {
         initComponents();
-           
-        try {
-            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            System.out.println("Connect to database...");
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
     }
-    
+
+    public SubmitStatus5(String content, int ref) {
+        initComponents();
+        content1 = content;
+        this.ref = ref;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -354,19 +344,21 @@ public class SubmitStatus5 extends javax.swing.JFrame {
     }//GEN-LAST:event_duedate7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        StudentController s = new StudentController();
+        s.downloadCoversheet(content1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         JFrame Window7 = new SubmitLink1();
-    Window7.setVisible(true);
+        Window7.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        JFrame Window6 = new DigitalReceipt();
-    Window6.setVisible(true);
+
+        DigitalReceipt z = new DigitalReceipt(ref);
+        z.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

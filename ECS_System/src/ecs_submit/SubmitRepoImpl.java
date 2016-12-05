@@ -117,29 +117,38 @@ public class SubmitRepoImpl {
 
     }
 
-    public void submitCourseworkCoursework(String filetyp, String subtitle, String content, boolean status) {
+    public int submitCourseworkCoursework(String filetyp, String subtitle, String content, boolean status) {
+        boolean submitted = true;
+        int reference = 0;
         if (status) {
             try {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
                 String submitinfo = dtf.format(now);
                 Random rnd = new Random();
-                int reference = 100000 + rnd.nextInt(900000);
+                reference = 100000 + rnd.nextInt(900000);
 
                 Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
                 String sql = "INSERT INTO SUBMIT VALUES ('" + subtitle + "', '" + filetyp + "', '" + content + "', " + reference + ", '" + submitinfo + "')";
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
                 st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Added Succesfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                Submited4 a = new Submited4(content, reference);
+                SubmitFile3 b = new SubmitFile3();
+                b.setVisible(false);
+                a.setVisible(true);
             } catch (SQLException ex) {
                 System.out.println(ex);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Data format is not matching!", "Warning", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "You have to agree to the term!", "Warning", JOptionPane.ERROR_MESSAGE);
+            Submited6 a = new Submited6();
+            SubmitFile3 b = new SubmitFile3();
+            a.setVisible(true);
+            b.setVisible(false);
         }
+        return reference;
     }
 
     public String digitalReceipt(Submit dr) {
