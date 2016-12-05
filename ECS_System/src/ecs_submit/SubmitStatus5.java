@@ -1,6 +1,7 @@
 package ecs_submit;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class SubmitStatus5 extends javax.swing.JFrame {
 
@@ -346,19 +347,20 @@ public class SubmitStatus5 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         StudentController s = new StudentController();
         s.downloadCoversheet(content1);
+        JOptionPane.showMessageDialog(null, "Coursework downloaded successfully!!", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         JFrame Window7 = new SubmitLink1();
         Window7.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         DigitalReceipt z = new DigitalReceipt(ref);
         z.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

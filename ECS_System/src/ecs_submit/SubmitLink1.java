@@ -106,6 +106,7 @@ public class SubmitLink1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFrame Window2 = new AddSubmission2();
     Window2.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -55,7 +55,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
 
-        jLabel1.setText("Course Title :");
+        jLabel1.setText("Coursework Title :");
 
         jLabel3.setText("Submission status:");
 
@@ -89,6 +89,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
         duedate.setText("Day, (dd, mm, yyyy), Time");
         duedate.setBorder(null);
         duedate.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        duedate.setEnabled(false);
         duedate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duedateActionPerformed(evt);
@@ -101,6 +102,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
         jLabel12.setText("Submission comments:");
 
+        duedate1.setEditable(false);
         duedate1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         duedate1.setText("This is attempt 1.");
         duedate1.setBorder(null);
@@ -194,9 +196,9 @@ public class AddSubmission2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6))

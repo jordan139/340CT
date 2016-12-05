@@ -80,7 +80,11 @@ public class SubmitFile3 extends javax.swing.JFrame {
             }
         });
 
-        Subtitle.setText("Submission Title");
+        Subtitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubtitleActionPerformed(evt);
+            }
+        });
 
         filechoose.setText("Choose the file");
         filechoose.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +111,6 @@ public class SubmitFile3 extends javax.swing.JFrame {
         textfile.setColumns(20);
         textfile.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         textfile.setRows(5);
-        textfile.setText("tEXT TSLTJSALASEFAJS;FLISJA;FLJSAIL;FJAS;LIFJA;ILSFJA;SLJFIALS;JFLASIFHSFHSAK");
         jScrollPane1.setViewportView(textfile);
 
         texttosubmit.setText("Text to Submit:");
@@ -196,6 +199,7 @@ public class SubmitFile3 extends javax.swing.JFrame {
         String content = textfile.getText();
         boolean status = tickbox.isSelected();
         s.submitCourseworkCoursework(filetyp, subtitle, content, status);
+        this.setVisible(false);
     }//GEN-LAST:event_AddSubmissionActionPerformed
 
     private void filechooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filechooseActionPerformed
@@ -205,6 +209,10 @@ public class SubmitFile3 extends javax.swing.JFrame {
     private void filetypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filetypeActionPerformed
+
+    private void SubtitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubtitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubtitleActionPerformed
 
     /**
      * @param args the command line arguments
