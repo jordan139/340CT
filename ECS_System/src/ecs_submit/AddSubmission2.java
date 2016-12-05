@@ -107,6 +107,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
         duedate1.setText("This is attempt 1.");
         duedate1.setBorder(null);
         duedate1.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        duedate1.setEnabled(false);
         duedate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duedate1ActionPerformed(evt);
