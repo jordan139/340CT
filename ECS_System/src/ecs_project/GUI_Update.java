@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 public class GUI_Update extends javax.swing.JFrame {
 
+    //all the variables needed to update a coursework object is initialized.
     CourseworkController control = new CourseworkController();
     int modulecode;
     double coursemark;
@@ -21,6 +22,7 @@ public class GUI_Update extends javax.swing.JFrame {
     public GUI_Update() {
         initComponents();
         TextArea.setEnabled(false);
+        //all the existing coursework objects are displayed on a text area for users to see.
         for (int i = 0; i < control.getCourseworkList().size(); i++) {
             TextArea.append(control.getCourseworkList().get(i).toString());
         }
@@ -224,6 +226,7 @@ public class GUI_Update extends javax.swing.JFrame {
 
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         try {
+            //gets all the input values from user and stores them into the previously initialized variables. 
             modulecode = Integer.parseInt(Modulecodetxt.getText());
             moduletitle = Moduletitletxt.getText();
             moduletutor = Moduletutortxt.getText();
@@ -233,26 +236,35 @@ public class GUI_Update extends javax.swing.JFrame {
             coursedue = Courseduetxt.getText();
             coursetype = TypeCombo.getSelectedItem().toString();
             coursemark = Double.parseDouble(Courseduetxt1.getText());
+
+            //checks if a new coursework type is individual or group.
             if (coursetype.equals("Individual")) {
+                //function that submits a new individual coursework object is called. 
                 control.updateIndividualCoursework(new Individual(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
             } else {
+                //function that submits a new group coursework object is called.
                 control.updateGroupCoursework(new Group(modulecode, moduletitle, moduletutor, coursenumber, coursetitle, courseissue, coursedue, coursemark));
             }
             emptyTextfields();
             TextArea.setText("");
+
+            //the coursework object list is refreshed and displayed back to user.
             for (int i = 0; i < control.getCourseworkList().size(); i++) {
                 TextArea.append(control.getCourseworkList().get(i).toString());
             }
+            //checks if the user inputs are all in a correct format or if there is an empty field. 
         } catch (NumberFormatException ex) {
-             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_UpdateBtnActionPerformed
 
     private void ReturnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBtnActionPerformed
+        //if the return button is pressed, the current GUI_Update panel gets closed and opens the GUI_Main.
         setVisible(false);
         GUI_Main r = new GUI_Main();
         r.setVisible(true);
     }//GEN-LAST:event_ReturnBtnActionPerformed
+    //clears all the texts from the textfields.
     private void emptyTextfields() {
         Courseduetxt1.setText("");
         Coursenumbertxt.setText("");

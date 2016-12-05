@@ -6,12 +6,14 @@ import javax.swing.JOptionPane;
 
 public class GUI_Remove extends javax.swing.JFrame {
 
+    //All the variables needed to remove an existing coursework object is initialized.
     CourseworkController control = new CourseworkController();
     int modulecode;
 
     public GUI_Remove() {
         initComponents();
         TextArea.setEnabled(false);
+        //all the existing coursework objects are displayed on a text area for users to see.
         for (int i = 0; i < control.getCourseworkList().size(); i++) {
             TextArea.append(control.getCourseworkList().get(i).toString());
         }
@@ -100,23 +102,29 @@ public class GUI_Remove extends javax.swing.JFrame {
 
     private void RemoveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveBtnActionPerformed
         try {
+            //gets all the input values from a user and stores them into the previously initialized variable(s). 
             modulecode = Integer.parseInt(Modulecodetxt.getText());
+            //function that deletes an existing coursework object is handled.
             control.deleteCoursework(modulecode);
             emptyTextfields();
             TextArea.setText("");
+            //the coursework object list is refreshed and displayed back to user.
             for (int i = 0; i < control.getCourseworkList().size(); i++) {
                 TextArea.append(control.getCourseworkList().get(i).toString());
             }
+            //checks if the user inputs are all in a correct format or if there is an empty field. 
         } catch (NumberFormatException ex) {
-             JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error! Check format type(s) or empty field(s).", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_RemoveBtnActionPerformed
 
     private void ReturnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBtnActionPerformed
+        //if the return button is pressed, the current GUI_Remove panel gets closed and opens the GUI_Main.
         setVisible(false);
         GUI_Main r = new GUI_Main();
         r.setVisible(true);
     }//GEN-LAST:event_ReturnBtnActionPerformed
+    //clears all the texts from the textfields.
     private void emptyTextfields() {
         Modulecodetxt.setText("");
     }
