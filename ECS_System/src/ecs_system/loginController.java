@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 
 public class loginController {
 
+    
+    //main bulk of code run from this class here. Data is passed through to the controller where it will update the GUI 
+    //Controller acts as the main class for the program 
     String commandline;
     String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
     String uName = "henry";
@@ -43,6 +46,7 @@ public class loginController {
                             temppass = rs.getString("PASSWORD");
                             System.out.println("Username correct.");
                             if (tempuser.equals(username)) {
+                                //check how mnay times the user gets the password wrong
                                 if (!temppass.equals(password)) {
                                     wrongInput = wrongInput - 1;
                                     JOptionPane.showMessageDialog(null, "Incorrect login password for user: " + username + "\n" + wrongInput + " Attempt(s) Left");
@@ -51,6 +55,7 @@ public class loginController {
                                 if (wrongInput == 1) {
                                     JOptionPane.showMessageDialog(null, "Final Attempt ", "Warning", JOptionPane.ERROR_MESSAGE);
                                 } else if (wrongInput == 0) {
+                                    //if user enters 3 wrong password locks them out of the system 
                                     JOptionPane.showMessageDialog(null, "To many incorrect logins\nClosing down system ", "Warning", JOptionPane.ERROR_MESSAGE);
                                     status = true;
                                 } else if (temppass.equals(password)) {
@@ -64,6 +69,7 @@ public class loginController {
                         }
                     }
                 }
+                //any errors due to connecting to DB catch and display to the user 
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
@@ -188,15 +194,20 @@ public class loginController {
     public boolean okButtonClicked(String username, String currentpass, String newpass, String confirmpass) {
         boolean status = false;
         try {
+            //connect to DB
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            //store temp data as empty strings 
             String tempuser = "";
             String tempcurpass = "";
+            //if no data is inputted by the user run the follwoing code
             if (username.equals("") || currentpass.equals("") || newpass.equals("") || confirmpass.equals("")) {
                 System.out.println("All the textfields require input...");
             } else if (!newpass.equals(confirmpass)) {
+                //display this message if password do not match 
                 JOptionPane.showMessageDialog(null, "Passwords do not match...");
             } else {
                 try {
+                    //check to see if password is saved within the DB
                     String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = '" + username + "'";
                     Statement st = conn.createStatement();
                     ResultSet rs = null;
@@ -205,15 +216,19 @@ public class loginController {
                         tempcurpass = rs.getString("PASSWORD");
                     }
                     if (tempcurpass.equals(currentpass)) {
+                        //update the current password 
                         String sql1 = "UPDATE LOGIN SET PASSWORD = '" + newpass + "' WHERE USERNAME = '" + username + "'";
                         st.executeUpdate(sql1);
                         JOptionPane.showMessageDialog(null, "Password for " + username + " successfully changed.");
                         status = true;
                     } else {
+                        //display if passwords do not match 
                         JOptionPane.showMessageDialog(null, "Passwords do not match...");
                     }
                 } catch (SQLException ex) {
+                    //catch errors and display the error code 
                     System.out.println(ex);
+                    //display if username cant be found within the database 
                     JOptionPane.showMessageDialog(null, "Username doesn't exist...");
                 }
             }

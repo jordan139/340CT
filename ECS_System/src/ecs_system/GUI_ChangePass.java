@@ -105,7 +105,7 @@ public class GUI_ChangePass extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+       //get data and store as a string 
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         String user = Usernametxt.getText();
         String curpass = Currentpasstxt.getText();
@@ -119,6 +119,7 @@ public class GUI_ChangePass extends javax.swing.JFrame {
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+        //when button is clicked make current window invisible and open up welcomeTemp page
         setVisible(false);
         new welcomeTemp().setVisible(true);
     }//GEN-LAST:event_returnBtnActionPerformed
@@ -153,6 +154,7 @@ public class GUI_ChangePass extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            //open an instnace of GUI_changePass 
             public void run() {
                 new GUI_ChangePass().setVisible(true);
             }
