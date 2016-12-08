@@ -36,13 +36,13 @@ public class AddSubmission2 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        duedate1 = new javax.swing.JTextField();
-        duedate2 = new javax.swing.JTextField();
-        duedate3 = new javax.swing.JTextField();
-        duedate4 = new javax.swing.JTextField();
+        attempt = new javax.swing.JTextField();
+        sStatus = new javax.swing.JTextField();
+        gStatus = new javax.swing.JTextField();
+        create = new javax.swing.JTextField();
         duedate5 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        duedate6 = new javax.swing.JTextField();
+        remain = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         courseCombo = new javax.swing.JComboBox<>();
 
@@ -54,6 +54,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
+        setLocation(new java.awt.Point(350, 130));
 
         jLabel1.setText("Coursework Title :");
 
@@ -102,48 +103,48 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
         jLabel12.setText("Submission comments:");
 
-        duedate1.setEditable(false);
-        duedate1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate1.setText("This is attempt 1.");
-        duedate1.setBorder(null);
-        duedate1.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate1.setEnabled(false);
-        duedate1.addActionListener(new java.awt.event.ActionListener() {
+        attempt.setEditable(false);
+        attempt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        attempt.setText("This is attempt 1.");
+        attempt.setBorder(null);
+        attempt.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        attempt.setEnabled(false);
+        attempt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                duedate1ActionPerformed(evt);
+                attemptActionPerformed(evt);
             }
         });
 
-        duedate2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate2.setText("No attempt");
-        duedate2.setBorder(null);
-        duedate2.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate2.setEnabled(false);
-        duedate2.addActionListener(new java.awt.event.ActionListener() {
+        sStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        sStatus.setText("No attempt");
+        sStatus.setBorder(null);
+        sStatus.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        sStatus.setEnabled(false);
+        sStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                duedate2ActionPerformed(evt);
+                sStatusActionPerformed(evt);
             }
         });
 
-        duedate3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate3.setText("Not graded");
-        duedate3.setBorder(null);
-        duedate3.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate3.setEnabled(false);
-        duedate3.addActionListener(new java.awt.event.ActionListener() {
+        gStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        gStatus.setText("Not graded");
+        gStatus.setBorder(null);
+        gStatus.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        gStatus.setEnabled(false);
+        gStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                duedate3ActionPerformed(evt);
+                gStatusActionPerformed(evt);
             }
         });
 
-        duedate4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate4.setText("Day, (dd, mm, yyyy), Time");
-        duedate4.setBorder(null);
-        duedate4.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate4.setEnabled(false);
-        duedate4.addActionListener(new java.awt.event.ActionListener() {
+        create.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        create.setText("Day, (dd, mm, yyyy), Time");
+        create.setBorder(null);
+        create.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        create.setEnabled(false);
+        create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                duedate4ActionPerformed(evt);
+                createActionPerformed(evt);
             }
         });
 
@@ -163,14 +164,14 @@ public class AddSubmission2 extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 51, 51));
         jLabel13.setText("Doing so will result in your assignment being marked as late.");
 
-        duedate6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate6.setText("0 Days, 0 hours ");
-        duedate6.setBorder(null);
-        duedate6.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        duedate6.setEnabled(false);
-        duedate6.addActionListener(new java.awt.event.ActionListener() {
+        remain.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        remain.setText("0 Days, 0 hours ");
+        remain.setBorder(null);
+        remain.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        remain.setEnabled(false);
+        remain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                duedate6ActionPerformed(evt);
+                remainActionPerformed(evt);
             }
         });
 
@@ -221,11 +222,11 @@ public class AddSubmission2 extends javax.swing.JFrame {
                                 .addComponent(jLabel9))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(duedate6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duedate2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duedate3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(remain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(gStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duedate4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(duedate5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -234,7 +235,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addComponent(duedate1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(attempt, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(177, 177, 177)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -256,15 +257,15 @@ public class AddSubmission2 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(duedate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(attempt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(duedate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(duedate3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -272,11 +273,11 @@ public class AddSubmission2 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(duedate6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(remain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(duedate4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -303,37 +304,47 @@ public class AddSubmission2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_duedateActionPerformed
 
-    private void duedate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate1ActionPerformed
+    private void attemptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attemptActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duedate1ActionPerformed
+    }//GEN-LAST:event_attemptActionPerformed
 
-    private void duedate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate2ActionPerformed
+    private void sStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duedate2ActionPerformed
+    }//GEN-LAST:event_sStatusActionPerformed
 
-    private void duedate3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate3ActionPerformed
+    private void gStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duedate3ActionPerformed
+    }//GEN-LAST:event_gStatusActionPerformed
 
-    private void duedate4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate4ActionPerformed
+    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duedate4ActionPerformed
+    }//GEN-LAST:event_createActionPerformed
 
     private void duedate5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_duedate5ActionPerformed
 
-    private void duedate6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duedate6ActionPerformed
+    private void remainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_duedate6ActionPerformed
+    }//GEN-LAST:event_remainActionPerformed
 
     private void SIDnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIDnumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SIDnumActionPerformed
 
     private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
-        String temp = s.updateDetails(courseCombo.getSelectedItem().toString());
-        duedate.setText(temp);
+        String temp = s.updateAttempt(courseCombo.getSelectedItem().toString());
+        attempt.setText(temp);
+        String temp1 = s.updateSStatus(courseCombo.getSelectedItem().toString());
+        sStatus.setText(temp1);
+        String temp2 = s.updateGStatus(courseCombo.getSelectedItem().toString());
+        gStatus.setText(temp2);
+        String temp3 = s.updateDue(courseCombo.getSelectedItem().toString());
+        duedate.setText(temp3);
+        String temp4 = s.updateRemain(courseCombo.getSelectedItem().toString());
+        remain.setText(temp4);
+        String temp5 = s.updateCreate(courseCombo.getSelectedItem().toString());
+        create.setText(temp5);
     }//GEN-LAST:event_courseComboActionPerformed
 
     /**
@@ -436,14 +447,12 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SIDnum;
+    private javax.swing.JTextField attempt;
     private javax.swing.JComboBox<String> courseCombo;
+    private javax.swing.JTextField create;
     private javax.swing.JTextField duedate;
-    private javax.swing.JTextField duedate1;
-    private javax.swing.JTextField duedate2;
-    private javax.swing.JTextField duedate3;
-    private javax.swing.JTextField duedate4;
     private javax.swing.JTextField duedate5;
-    private javax.swing.JTextField duedate6;
+    private javax.swing.JTextField gStatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -458,6 +467,8 @@ public class AddSubmission2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField remain;
+    private javax.swing.JTextField sStatus;
     // End of variables declaration//GEN-END:variables
 private void close() {
         WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

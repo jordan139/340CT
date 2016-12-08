@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ecs_submit;
 
+import Utilities.FileUtils;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -26,6 +27,7 @@ public class SubmitFile3 extends javax.swing.JFrame {
     int ReferenceNumber;
     int counter;
     String submitinfo;
+    List<String> temp;
 
     public SubmitFile3() {
         initComponents();
@@ -57,6 +59,7 @@ public class SubmitFile3 extends javax.swing.JFrame {
         texttosubmit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 130));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Sumit Paper");
@@ -204,6 +207,27 @@ public class SubmitFile3 extends javax.swing.JFrame {
 
     private void filechooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filechooseActionPerformed
         textfile.append(s.ChooseFile());
+        try {
+            
+            /* This opens a window letting the user to choose the file
+            that he/she wishes to open */
+            JFileChooser chooser = new JFileChooser();
+            int answer = chooser.showOpenDialog(this);
+            if (answer == JFileChooser.APPROVE_OPTION) {
+                File f = chooser.getSelectedFile();
+                String filename = f.getAbsolutePath();
+                String temp1 = retrieve(filename);
+                System.out.println(temp1);
+                display(temp1);
+                // Buttons are enabled for the user to interact
+                
+            }
+        } catch (NumberFormatException exception) {
+            System.out.println("ERROR... The file that you are trying to"
+                    + " open is not in a correct format!!!");
+        }
+                                         
+
     }//GEN-LAST:event_filechooseActionPerformed
 
     private void filetypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetypeActionPerformed
@@ -214,6 +238,19 @@ public class SubmitFile3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SubtitleActionPerformed
 
+        private String retrieve(String filename) {
+        List<String> data = FileUtils.readIntoList(filename);
+        String a = "";
+        for (int i = 0; i < data.size(); i++) {
+            a = data.get(i).toString();
+        }
+        return a;
+    }
+
+    // Simply displays all the objects stored within the 'model' list
+    private void display(String content) {
+            textfile.append(content);
+    }
     /**
      * @param args the command line arguments
      */

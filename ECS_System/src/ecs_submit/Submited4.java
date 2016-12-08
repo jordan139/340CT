@@ -25,6 +25,7 @@ public class Submited4 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
+        setLocation(new java.awt.Point(350, 200));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Congratulations!!");

@@ -8,7 +8,7 @@ public class StudentController {
     SubmitRepoImpl c = new SubmitRepoImpl();
 
     public ArrayList getCourseworkList() {
-        return c.getAll();
+        return c.getCourseworkTitles();
     }
 
     public void submitCoursework(Submit cw) {

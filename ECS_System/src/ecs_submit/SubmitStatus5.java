@@ -57,6 +57,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Coursework Submission");
+        setLocation(new java.awt.Point(350, 130));
 
         jLabel3.setText("Submission status:");
 

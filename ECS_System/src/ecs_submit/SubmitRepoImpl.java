@@ -52,10 +52,9 @@ public class SubmitRepoImpl {
         return coursetitles;
     }
 
-    public String updateDetails(String coursetitle) {
+    public String updateAttempt(String coursetitle) {
         String temp = "";
-        String temp1 = "";
-        String temp2 = "";
+        
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
 
@@ -63,18 +62,122 @@ public class SubmitRepoImpl {
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
 
-                String sql = "SELECT COURSE_DUE, COURSE_CREATION FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                String sql = " SELECT ATTEMPT_NUMBER FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
                 rs = st.executeQuery(sql);
                 while (rs.next()) {
-                    temp = rs.getString("COURSE_DUE");
-                    temp1 = rs.getString("COURSE_CREATION");
+                    temp = rs.getString("ATTEMPT_NUMBER");
+                    
                 }
-                temp2 = temp + " " + temp1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return temp;
+    }
+    public String updateSStatus(String coursetitle) {
+        String temp1 = "";
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                String sql = " SELECT SUB_STATUS, GRADE_STATUS, COURSE_DUE, TIME_REMAIN, COURSE_CREATION FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    temp1 = rs.getString("SUB_STATUS");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return temp1;
+    }
+    public String updateGStatus(String coursetitle) {
+        String temp2 = "";
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                String sql = " SELECT  GRADE_STATUS FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    temp2 = rs.getString("GRADE_STATUS");
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         return temp2;
+    }
+    public String updateDue(String coursetitle) {
+        String temp3 = "";
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                String sql = " SELECT  COURSE_DUE FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    temp3 = rs.getString("COURSE_DUE");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return temp3;
+    }
+    public String updateRemain(String coursetitle) {
+        String temp4 = "";
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                String sql = " SELECT TIME_REMAIN FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    temp4 = rs.getString("TIME_REMAIN");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return temp4;
+    }
+    public String updateCreate(String coursetitle) {
+        String temp5 = "";
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+
+            if (conn != null) {
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+
+                String sql = " SELECT  COURSE_CREATION FROM COURSEWORK WHERE COURSE_TITLE = '" + coursetitle + "'";
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    temp5 = rs.getString("COURSE_CREATION");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return temp5;
     }
 
     public String ChooseFile() {
