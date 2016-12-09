@@ -17,6 +17,8 @@ import javax.swing.JFileChooser;
 public class SubmitFile3 extends javax.swing.JFrame {
 
     SubmitRepoImpl s = new SubmitRepoImpl();
+    
+    //all the variables needed to submit a coursework object is initialized.
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss");
     StudentController control = new StudentController();
     Submited6 b = new Submited6();
@@ -89,6 +91,7 @@ public class SubmitFile3 extends javax.swing.JFrame {
             }
         });
 
+        filechoose.setBackground(new java.awt.Color(153, 183, 181));
         filechoose.setText("Choose the file");
         filechoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +107,7 @@ public class SubmitFile3 extends javax.swing.JFrame {
             }
         });
 
+        AddSubmission.setBackground(new java.awt.Color(153, 183, 181));
         AddSubmission.setText("Add Submission");
         AddSubmission.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

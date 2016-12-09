@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecs_submit;
 
 import javax.swing.JFrame;
@@ -13,9 +8,6 @@ import javax.swing.JFrame;
  */
 public class Submited6 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Window5
-     */
     public Submited6() {
         initComponents();
     }
@@ -43,6 +35,7 @@ public class Submited6 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Your coursework has not been submitted successfully.");
 
+        jButton1.setBackground(new java.awt.Color(153, 183, 181));
         jButton1.setText("Try again");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,8 +57,8 @@ public class Submited6 extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(186, 186, 186))))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(175, 175, 175))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,8 +67,8 @@ public class Submited6 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

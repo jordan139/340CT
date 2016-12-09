@@ -75,13 +75,13 @@
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="remain" min="-2" max="-2" attributes="0"/>
-                              <Component id="sStatus" alignment="0" min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="gStatus" min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="duedate" min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="create" min="-2" pref="311" max="-2" attributes="0"/>
-                              <Component id="duedate5" min="-2" pref="311" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="sStatus" alignment="0" pref="311" max="32767" attributes="0"/>
+                              <Component id="gStatus" pref="311" max="32767" attributes="0"/>
+                              <Component id="duedate" pref="311" max="32767" attributes="0"/>
+                              <Component id="create" pref="311" max="32767" attributes="0"/>
+                              <Component id="duedate5" pref="311" max="32767" attributes="0"/>
+                              <Component id="remain" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -189,6 +189,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b5" green="b7" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Confirm and Proceed"/>
       </Properties>
       <Events>

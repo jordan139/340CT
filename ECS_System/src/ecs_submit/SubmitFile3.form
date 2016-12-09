@@ -180,6 +180,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="filechoose">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b5" green="b7" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Choose the file"/>
       </Properties>
       <Events>
@@ -198,6 +201,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="AddSubmission">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b5" green="b7" red="99" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add Submission"/>
       </Properties>
       <Events>

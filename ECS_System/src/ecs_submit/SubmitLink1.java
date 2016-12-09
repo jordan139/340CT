@@ -1,23 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecs_submit;
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-import java.io.File;
-import java.util.*;
 /**
  *
  * @author baheeraj
  */
 public class SubmitLink1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Window1
-     */
+
     public SubmitLink1() {
         initComponents();
     }

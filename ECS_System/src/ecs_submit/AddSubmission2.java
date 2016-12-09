@@ -2,17 +2,14 @@ package ecs_submit;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
 
 public class AddSubmission2 extends javax.swing.JFrame {
 
     SubmitRepoImpl s = new SubmitRepoImpl();
 
-    /**
-     * Creates new form Window1
-     */
     public AddSubmission2() {
         initComponents();
+        //all the existing coursework objects are displayed on a text area for users to see.
         for (int i = 0; i < s.getCourseworkTitles().size(); i++) {
             courseCombo.addItem(s.getCourseworkTitles().get(i).toString());
         }
@@ -64,6 +61,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
 
         jLabel5.setText("Last modified");
 
+        jButton1.setBackground(new java.awt.Color(153, 183, 181));
         jButton1.setText("Confirm and Proceed");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,13 +219,13 @@ public class AddSubmission2 extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addComponent(jLabel9))
                             .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(remain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(gStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duedate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(duedate5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(sStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(gStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(duedate, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(duedate5, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(remain)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
@@ -295,6 +293,7 @@ public class AddSubmission2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //if the confirm button is pressed, the current GUI panel gets closed and opens the SubmitFile GUI.
         SubmitFile3 a = new SubmitFile3();
         a.setVisible(true);
         this.setVisible(false);

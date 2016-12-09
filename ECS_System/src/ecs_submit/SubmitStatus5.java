@@ -4,12 +4,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class SubmitStatus5 extends javax.swing.JFrame {
-
+    
+    SubmitRepoImpl s = new SubmitRepoImpl();
+            
     String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
     String uName = "jey";
     String uPass = "123";
     String content1 = "";
     int ref = 0;
+
 
     public SubmitStatus5() {
         initComponents();
@@ -45,9 +48,9 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         duedate7 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        download = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        viewRef = new javax.swing.JButton();
 
         SIDnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +80,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         jLabel9.setText("Due date :");
 
         duedate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate.setText("Day, (dd, mm, yyyy), Time");
+        duedate.setText("2016-12-15");
         duedate.setBorder(null);
         duedate.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         duedate.setEnabled(false);
@@ -98,6 +101,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         duedate1.setBorder(null);
         duedate1.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         duedate1.setEnabled(false);
+        duedate1.setOpaque(false);
         duedate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duedate1ActionPerformed(evt);
@@ -127,7 +131,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         });
 
         duedate4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate4.setText("Day, (dd, mm, yyyy), Time");
+        duedate4.setText("25-11-2016_16:56:49");
         duedate4.setBorder(null);
         duedate4.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         duedate4.setEnabled(false);
@@ -166,7 +170,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         jLabel8.setText("File Submission:");
 
         duedate7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        duedate7.setText("Show file name");
+        duedate7.setText("Coursework.doc");
         duedate7.setBorder(null);
         duedate7.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         duedate7.setEnabled(false);
@@ -176,13 +180,15 @@ public class SubmitStatus5 extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Download Submission");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        download.setBackground(new java.awt.Color(153, 183, 181));
+        download.setText("Download Submission");
+        download.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                downloadActionPerformed(evt);
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(153, 183, 181));
         jButton3.setText("Return");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,10 +196,11 @@ public class SubmitStatus5 extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("View Ref Num");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        viewRef.setBackground(new java.awt.Color(153, 183, 181));
+        viewRef.setText("View Ref Num");
+        viewRef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                viewRefActionPerformed(evt);
             }
         });
 
@@ -239,9 +246,9 @@ public class SubmitStatus5 extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(183, 183, 183)
-                                .addComponent(jButton1)
+                                .addComponent(download)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))
+                                .addComponent(viewRef)))
                         .addGap(0, 2, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -295,8 +302,8 @@ public class SubmitStatus5 extends javax.swing.JFrame {
                     .addComponent(duedate7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewRef, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -345,11 +352,11 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_duedate7ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void downloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadActionPerformed
         StudentController s = new StudentController();
         s.downloadCoversheet(content1);
         JOptionPane.showMessageDialog(null, "Coursework downloaded successfully!!", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_downloadActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -358,11 +365,11 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void viewRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRefActionPerformed
 
         DigitalReceipt z = new DigitalReceipt(ref);
         z.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_viewRefActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,132 +399,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+      
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -528,6 +410,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SIDnum;
+    private javax.swing.JButton download;
     private javax.swing.JTextField duedate;
     private javax.swing.JTextField duedate1;
     private javax.swing.JTextField duedate2;
@@ -536,8 +419,6 @@ public class SubmitStatus5 extends javax.swing.JFrame {
     private javax.swing.JTextField duedate5;
     private javax.swing.JTextField duedate6;
     private javax.swing.JTextField duedate7;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -550,5 +431,6 @@ public class SubmitStatus5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton viewRef;
     // End of variables declaration//GEN-END:variables
 }
