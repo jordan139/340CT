@@ -5,7 +5,10 @@
  */
 package ecs_system;
 
-import ecs_submit.AddSubmission2;
+import ecs_project.GUI_Generate;
+import ecs_project.GUI_Main;
+import ecs_report.GUI_Report;
+import ecs_status.GUI_main;
 import ecs_submit.SubmitLink1;
 
 
@@ -34,12 +37,12 @@ public class welcomeTemp extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        create = new javax.swing.JButton();
+        download = new javax.swing.JButton();
+        submit = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        report = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,99 +50,99 @@ public class welcomeTemp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(350, 130));
 
-        jButton4.setBackground(new java.awt.Color(0, 102, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 204));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/createcw.png"))); // NOI18N
-        jButton4.setText("Create coursework");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        create.setBackground(new java.awt.Color(0, 102, 255));
+        create.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        create.setForeground(new java.awt.Color(0, 0, 204));
+        create.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/createcw.png"))); // NOI18N
+        create.setText("Create coursework");
+        create.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        create.setContentAreaFilled(false);
+        create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        create.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        create.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                createActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(0, 102, 255));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 204));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/download.png"))); // NOI18N
-        jButton8.setText("Download coversheet");
-        jButton8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        download.setBackground(new java.awt.Color(0, 102, 255));
+        download.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        download.setForeground(new java.awt.Color(0, 0, 204));
+        download.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/download.png"))); // NOI18N
+        download.setText("Download coversheet");
+        download.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        download.setContentAreaFilled(false);
+        download.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        download.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        download.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        download.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                downloadActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(0, 102, 255));
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 0, 204));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_submit/icon.png"))); // NOI18N
-        jButton9.setText("Submit coursework");
-        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        submit.setBackground(new java.awt.Color(0, 102, 255));
+        submit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        submit.setForeground(new java.awt.Color(0, 0, 204));
+        submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_submit/icon.png"))); // NOI18N
+        submit.setText("Submit coursework");
+        submit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        submit.setContentAreaFilled(false);
+        submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submit.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        submit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                submitActionPerformed(evt);
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(0, 102, 255));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 0, 204));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/update.png"))); // NOI18N
-        jButton10.setText("Update status");
-        jButton10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton10.setContentAreaFilled(false);
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        update.setBackground(new java.awt.Color(0, 102, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        update.setForeground(new java.awt.Color(0, 0, 204));
+        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/update.png"))); // NOI18N
+        update.setText("Update status");
+        update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        update.setContentAreaFilled(false);
+        update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        update.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        update.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
 
-        jButton11.setBackground(new java.awt.Color(0, 102, 255));
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 0, 204));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/report.png"))); // NOI18N
-        jButton11.setText("Update status");
-        jButton11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton11.setContentAreaFilled(false);
-        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        report.setBackground(new java.awt.Color(0, 102, 255));
+        report.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        report.setForeground(new java.awt.Color(0, 0, 204));
+        report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/report.png"))); // NOI18N
+        report.setText("Generate report");
+        report.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        report.setContentAreaFilled(false);
+        report.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        report.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        report.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                reportActionPerformed(evt);
             }
         });
 
-        jButton12.setBackground(new java.awt.Color(0, 102, 255));
-        jButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(0, 0, 204));
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/logout2.png"))); // NOI18N
-        jButton12.setText("Logout");
-        jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton12.setContentAreaFilled(false);
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        logout.setBackground(new java.awt.Color(0, 102, 255));
+        logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(0, 0, 204));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ecs_system/logout2.png"))); // NOI18N
+        logout.setText("Logout");
+        logout.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logout.setContentAreaFilled(false);
+        logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        logout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
 
@@ -150,14 +153,14 @@ public class welcomeTemp extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -165,16 +168,16 @@ public class welcomeTemp extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(download, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -219,28 +222,29 @@ public class welcomeTemp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
+        new GUI_Main().setVisible(true);
+    }//GEN-LAST:event_createActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void downloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadActionPerformed
+        new GUI_Generate().setVisible(true);
+    }//GEN-LAST:event_downloadActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         new SubmitLink1().setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_submitActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        new GUI_main().setVisible(true);
+    }//GEN-LAST:event_updateActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportActionPerformed
+        new GUI_Report().setVisible(true);
+    }//GEN-LAST:event_reportActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,15 +283,15 @@ public class welcomeTemp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton create;
+    private javax.swing.JButton download;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton logout;
+    private javax.swing.JButton report;
+    private javax.swing.JButton submit;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
