@@ -1,5 +1,6 @@
 package ecs_submit;
 
+import ecs_system.welcomeTemp;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -360,7 +361,7 @@ public class SubmitStatus5 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JFrame Window7 = new SubmitLink1();
+        JFrame Window7 = new welcomeTemp();
         Window7.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
