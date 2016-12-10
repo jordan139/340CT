@@ -13,8 +13,8 @@ public class loginController {
     //main bulk of code run from this class here. Data is passed through to the controller where it will update the GUI 
     //Controller acts as the main class for the program 
     String commandline;
-    String connectionURL = "jdbc:derby://localhost:1527/Coursework_db";
-    String uName = "henry";
+    String connectionURL = "jdbc:derby://localhost:1527/COURSEWORK";
+    String uName = "jey";
     String uPass = "123";
     int wrongInput = 4;
 

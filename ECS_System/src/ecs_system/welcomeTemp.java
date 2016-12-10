@@ -232,6 +232,7 @@ public class welcomeTemp extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         new SubmitLink1().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_submitActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
