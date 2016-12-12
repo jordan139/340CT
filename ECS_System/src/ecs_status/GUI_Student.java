@@ -25,7 +25,9 @@ public class GUI_Student extends javax.swing.JFrame {
 
     public GUI_Student() {
         initComponents();
-
+        /*this is the code to connect to the database and it will try and catch any errors that
+        match the username or password
+        */
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             System.out.println("Connect to database...");
@@ -133,13 +135,13 @@ public class GUI_Student extends javax.swing.JFrame {
     private void lastTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lastTxtActionPerformed
-
+// this is the code to return back to the menu page
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
         GUI_main m = new GUI_main();
         this.setVisible(false);
         m.setVisible(true);
     }//GEN-LAST:event_BackBtnActionPerformed
-
+//this is the button to save any cahnges made to the ID. firstname or lastname
     private void changeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeBtnActionPerformed
         int id = Integer.parseInt(idTxt.getText());
         String firstname = firstTxt.getText();

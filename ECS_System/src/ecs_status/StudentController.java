@@ -8,11 +8,11 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class StudentController {
-
+//This is what you need as a username and password to login
     String connectionURL = "jdbc:derby://localhost:1527/CourseworkStatus";
     String uName = "yusufm6";
     String uPass = "123";
-
+// This is the code to update student name which will be stored in a SQL database
     public void updateStudentName(int id, String firstname, String lastname) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -25,7 +25,7 @@ public class StudentController {
             System.out.println(ex);
         }
     }
-    
+   // This is the code to update the coursewrok status which will be stored in a SQL database 
     public void updateCourseworkStatus(int id, String status) {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);

@@ -102,17 +102,19 @@ public class GUI_Status extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+// This is the code to input student ID
     private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idTxtActionPerformed
-
+    /* This is the code to save the changes made to the coursework and via combo box
+    and the input of student ID by inputting an integer
+    */
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         int id = Integer.parseInt(idTxt.getText());
         String status = statusCombo.getSelectedItem().toString();
         st.updateCourseworkStatus(id, status);
     }//GEN-LAST:event_saveBtnActionPerformed
-
+// This is the code to return back to the menu page
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         GUI_main m = new GUI_main();
         this.setVisible(false);

@@ -24,15 +24,15 @@ public class GUI_main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        stduentBtn = new javax.swing.JButton();
+        studentBtn = new javax.swing.JButton();
         statusBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        stduentBtn.setText("Student Name");
-        stduentBtn.addActionListener(new java.awt.event.ActionListener() {
+        studentBtn.setText("Student Name");
+        studentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stduentBtnActionPerformed(evt);
+                studentBtnActionPerformed(evt);
             }
         });
 
@@ -50,7 +50,7 @@ public class GUI_main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stduentBtn)
+                    .addComponent(studentBtn)
                     .addComponent(statusBtn))
                 .addContainerGap(227, Short.MAX_VALUE))
         );
@@ -58,7 +58,7 @@ public class GUI_main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(stduentBtn)
+                .addComponent(studentBtn)
                 .addGap(18, 18, 18)
                 .addComponent(statusBtn)
                 .addContainerGap(225, Short.MAX_VALUE))
@@ -66,16 +66,20 @@ public class GUI_main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/* This is the button for change the courswork status where it will redirect the user to
+    to GUI_Status
+ */   
     private void statusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusBtnActionPerformed
         GUI_Status s = new GUI_Status();
         s.setVisible(true);
     }//GEN-LAST:event_statusBtnActionPerformed
-
-    private void stduentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stduentBtnActionPerformed
+/* This is the button for change the student name where it will redirect the user to
+    to GUI_Student
+ */
+    private void studentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentBtnActionPerformed
         GUI_Student st = new GUI_Student();
         st.setVisible(true);
-    }//GEN-LAST:event_stduentBtnActionPerformed
+    }//GEN-LAST:event_studentBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +118,6 @@ public class GUI_main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton statusBtn;
-    private javax.swing.JButton stduentBtn;
+    private javax.swing.JButton studentBtn;
     // End of variables declaration//GEN-END:variables
 }
