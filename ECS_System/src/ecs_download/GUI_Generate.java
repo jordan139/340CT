@@ -10,6 +10,7 @@ public class GUI_Generate extends javax.swing.JFrame {
     public GUI_Generate() {
         initComponents();
         TextArea.setEnabled(false);
+        //Exisiting coursework modules objects are displayed on a text area for users to see.
         for (int i = 0; i < control.getCourseworkTitles().size(); i++) {
             courseCombo.addItem(control.getCourseworkTitles().get(i).toString());
         }
@@ -92,19 +93,23 @@ public class GUI_Generate extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+        //when return button is pressed the current GUI_Generate panel gets closed and opens the GUI_Main.
         setVisible(false);
         GUI_Main r = new GUI_Main();
         r.setVisible(true);
     }//GEN-LAST:event_returnBtnActionPerformed
 
     private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
+        //Generates a coversheet for specified coursework module object by a user.
         String coursetitle = courseCombo.getSelectedItem().toString();
         TextArea.setText("");
         TextArea.append(control.generateCourseworkDetails(coursetitle));
     }//GEN-LAST:event_courseComboActionPerformed
 
     private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
+         //Calls function that downloads a coversheet of a specified coursework module object.
         control.downloadCoversheet(TextArea.getText());
+        //Window illuminates to notify the user that download was successful.
         JOptionPane.showMessageDialog(null, "Download Successful.", "Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_downloadBtnActionPerformed
 
